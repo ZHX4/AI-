@@ -26,12 +26,17 @@ jobs:
           python -m py_compile parts/part_01_foundations_final.py
           python -m py_compile parts/part_02_vector_spaces.py
           python -m py_compile parts/part_03_matrices_final.py
+          python -m py_compile parts/part_04_systems_final.py
           python -m py_compile render_part1.py
           python -m py_compile render_part2.py
           python -m py_compile render_part3.py
+          python -m py_compile render_part4.py
           python -m py_compile verify_part2.py
           python -m py_compile verify_part3.py
+          python -m py_compile verify_part4.py
       - name: Verify Part II
         run: python verify_part2.py
       - name: Verify Part III
         run: python verify_part3.py
+      - name: Verify Part IV
+        run: python verify_part4.py
