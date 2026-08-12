@@ -1,0 +1,11 @@
+[project]
+name = "linear-algebra-manim"
+version = "0.1.0"
+description = "Long-form visual linear algebra course for AI/ML students"
+requires-python = ">=3.12"
+dependencies = [
+    "manim==0.20.1",
+]
+
+[tool.uv]
+package = false
