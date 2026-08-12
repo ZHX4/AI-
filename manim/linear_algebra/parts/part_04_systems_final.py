@@ -19,7 +19,8 @@ class SystemsLesson(LessonScene):
         return MathTex(latex).scale(scale).to_edge(RIGHT, buff=0.25).shift(UP * y)
 
     def line(self, ax, slope, intercept, color):
-        return ax.plot(lambda x: slope * x + intercept, color=color, x_range=[0, 4])
+        xmin, xmax = ax.x_range[0], ax.x_range[1]
+        return ax.plot(lambda x: slope * x + intercept, color=color, x_range=[xmin, xmax])
 
     def dot(self, ax, xy, color=HIGHLIGHT, radius=0.09):
         return Dot(ax.c2p(*xy), radius=radius, color=color)
@@ -113,8 +114,8 @@ class Part4_06_BackSubstitution(SystemsLesson):
         self.cc("After elimination, the last row is often the easiest equation. Start there. Then carry each known value upward into the row above.", 3.3)
         self.play(Write(self.eq(r"5z=10\Rightarrow z=2", 0.84, 0.25)))
         self.play(Write(self.eq(r"3y+2z=7\Rightarrow y=1", 0.84, -0.45)))
-        self.play(Write(self.eq(r"x+2y-z=4\Rightarrow x=2", 0.78, -1.15)))
-        self.play(Write(self.eq(r"\boxed{(x,y,z)=(2,1,2)}", 0.90, -1.95)))
+        self.play(Write(self.eq(r"x+2y-z=4\Rightarrow x=4", 0.78, -1.15)))
+        self.play(Write(self.eq(r"\boxed{(x,y,z)=(4,1,2)}", 0.90, -1.95)))
         self.cc("Back substitution works because each row has fewer unresolved variables than the row above. The triangular form created that dependency structure for us.", 3.3)
         self.wait(2)
 
@@ -135,7 +136,7 @@ class Part4_07_RREF(SystemsLesson):
 class Part4_08_ThreeSolutionCases(SystemsLesson):
     def construct(self):
         self.title("Part IV.8 — The Three Possible Solution Cases", "Unique, none, or infinitely many")
-        ax = self.axes2d(x_range=(-1, 6), y_range=(-1, 6)); self.play(Create(ax))
+        ax = self.axes2d(x_range=(-1, 6), y_range=(-1, 7)); self.play(Create(ax))
 
         unique1 = self.line(ax, -1, 5, VECTOR_A)
         unique2 = self.line(ax, 2, -3, VECTOR_B)
