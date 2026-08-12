@@ -10,7 +10,7 @@ The curriculum is organized into 13 parts:
 
 1. **Foundations** — scalars, vectors, coordinates, operations, magnitude, linear combinations
 2. **Vector Spaces** — span, independence, basis, dimension, subspaces, nonstandard coordinates, fundamental subspaces
-3. **Matrices** — matrix-vector multiplication, matrix operations, composition, transpose, inverse
+3. **Matrices** — matrix structure, matrix-vector multiplication, columns, transformations, addition/scaling, multiplication, composition, identity, transpose, inverse
 4. **Systems of Equations** — Ax=b, elimination, row operations, RREF, solution geometry
 5. **Geometry** — dot products, angles, orthogonality, projections, Gram-Schmidt
 6. **Determinants** — area/volume scaling, orientation, invertibility, determinant properties
@@ -34,36 +34,29 @@ The visual language uses coordinate axes, labeled vectors, moving points, subspa
 
 ## Part I status
 
-Part I contains eight long-form lessons:
-
-- `Part1_01_ScalarsAndVectors`
-- `Part1_02_CoordinatesAndComponents`
-- `Part1_03_VectorAddition`
-- `Part1_04_VectorSubtraction`
-- `Part1_05_ScalingAndUnitVectors`
-- `Part1_06_MagnitudeAndDistance`
-- `Part1_07_LinearCombinations`
-- `Part1_08_FoundationsRecap`
-
-See [`parts/PART_I_FOUNDATIONS.md`](parts/PART_I_FOUNDATIONS.md).
+Part I contains eight long-form lessons. See [`parts/PART_I_FOUNDATIONS.md`](parts/PART_I_FOUNDATIONS.md).
 
 ## Part II status
 
-Part II contains eleven long-form lessons, all implemented in one canonical source file:
+Part II contains eleven long-form lessons, all implemented in one canonical source file `parts/part_02_vector_spaces.py`. See [`parts/PART_II_VECTOR_SPACES.md`](parts/PART_II_VECTOR_SPACES.md).
 
-- `Part2_01_Span`
-- `Part2_02_LinearDependence`
-- `Part2_03_LinearIndependence`
-- `Part2_04_Basis`
-- `Part2_05_Dimension`
-- `Part2_06_CoordinatesInANonstandardBasis`
-- `Part2_07_Subspaces`
-- `Part2_08_ColumnSpace`
-- `Part2_09_RowSpaceAndNullSpace`
-- `Part2_10_RankNullity`
-- `Part2_11_FourFundamentalSubspaces`
+## Part III status
 
-See [`parts/PART_II_VECTOR_SPACES.md`](parts/PART_II_VECTOR_SPACES.md).
+Part III contains eleven long-form lessons, all implemented in one canonical source file `parts/part_03_matrices_final.py`:
+
+- `Part3_01_WhatIsAMatrix`
+- `Part3_02_MatrixVectorMultiplication`
+- `Part3_03_ColumnsBuildTheOutput`
+- `Part3_04_MatrixAsTransformation`
+- `Part3_05_MatrixAdditionAndScaling`
+- `Part3_06_MatrixMultiplication`
+- `Part3_07_CompositionOfTransformations`
+- `Part3_08_IdentityMatrix`
+- `Part3_09_Transpose`
+- `Part3_10_InverseMatrix`
+- `Part3_11_MatrixMastery`
+
+See [`parts/PART_III_MATRICES.md`](parts/PART_III_MATRICES.md).
 
 ## Repository layout
 
@@ -74,14 +67,18 @@ manim/linear_algebra/
 ├── render_all.py                          # prototype renderer
 ├── render_part1.py                        # authoritative Part I renderer
 ├── render_part2.py                        # authoritative Part II renderer
+├── render_part3.py                        # authoritative Part III renderer
 ├── verify_part1.py                        # Part I source checks
 ├── verify_part2.py                        # Part II source checks
+├── verify_part3.py                        # Part III source checks
 ├── parts/
 │   ├── __init__.py
 │   ├── part_01_foundations_final.py
 │   ├── PART_I_FOUNDATIONS.md
-│   ├── part_02_vector_spaces.py           # canonical Part II source
-│   └── PART_II_VECTOR_SPACES.md
+│   ├── part_02_vector_spaces.py
+│   ├── PART_II_VECTOR_SPACES.md
+│   ├── part_03_matrices_final.py
+│   └── PART_III_MATRICES.md
 ├── .github/workflows/manim-linear-algebra.yml
 ├── __init__.py
 ├── pyproject.toml
@@ -90,7 +87,7 @@ manim/linear_algebra/
 
 ## Setup
 
-The project targets **Manim Community 0.20.1**.
+The project targets **Manim Community 0.20.1**. Current Manim Community documentation provides the `Matrix`, `ApplyMatrix`, `Arrow`, and coordinate-system APIs used by the course. citeturn722788search7turn722788search0turn722788search10turn279489search9
 
 ```bash
 cd manim/linear_algebra
@@ -111,10 +108,22 @@ Render Part II:
 uv run python render_part2.py
 ```
 
-Verify Part II source structure and regression checkpoints:
+Render Part III:
+
+```bash
+uv run python render_part3.py
+```
+
+Verify Part II:
 
 ```bash
 uv run python verify_part2.py
+```
+
+Verify Part III:
+
+```bash
+uv run python verify_part3.py
 ```
 
 Generated media stays outside Git.
