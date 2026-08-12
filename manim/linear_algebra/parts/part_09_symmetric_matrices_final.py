@@ -101,12 +101,11 @@ class Part9_06_PrincipalAxes(SymmetricMatrixLesson):
         ax = self.axes2d(x_range=(-3, 3), y_range=(-3, 3))
         self.play(Create(ax))
         self.play(Create(self.eigendirection(ax, (1, 1), VECTOR_A)), Create(self.eigendirection(ax, (1, -1), VECTOR_B)))
-        # In principal coordinates: 4u^2 + 2v^2 = 1, so full axis lengths are 1 and sqrt(2).
         ellipse = Ellipse(width=sqrt(2), height=1.0, color=HIGHLIGHT, stroke_width=4)
         self.play(Create(ellipse.rotate(PI / 4)))
         self.play(Write(self.eq(r"q=4u^2+2v^2", 1.00, 0.95)))
         self.play(Write(self.eq(r"4u^2+2v^2=1", 0.90, 0.15)))
-        self.cc("The eigenvectors are the principal axes. In those coordinates there is no cross-term, and the ellipse axis lengths are determined by the eigenvalues.", 3.1)
+        self.cc("The eigenvectors are the principal axes. In those coordinates there is no cross-term, and the ellipse full axis lengths are 1 and sqrt(2), determined by the eigenvalues.", 3.1)
         self.play(Write(self.eq(r"\text{full axis lengths}=1,\ \sqrt2", 0.72, -0.85)))
         self.wait(2)
 
@@ -116,7 +115,7 @@ class Part9_07_RayleighQuotient(SymmetricMatrixLesson):
         self.title("Part IX.7 — Rayleigh Quotient", "Eigenvalues are the extreme quadratic-form values")
         self.play(Write(self.matrix(r"A=\begin{bmatrix}3&1\\1&3\end{bmatrix}")))
         self.cc("For nonzero x, the Rayleigh quotient compares x transpose A x with the squared length of x.", 2.9)
-        self.play(Write(self.eq(r"R(x)=\frac{x^TAx}{x^Tx", 1.00, 0.80)))
+        self.play(Write(self.eq(r"R(x)=\frac{x^TAx}{x^Tx}", 1.00, 0.80)))
         self.play(Write(self.eq(r"2\le R(x)\le4", 0.90, -0.02)))
         self.play(Write(self.eq(r"R(q_1)=4,\qquad R(q_2)=2", 0.84, -0.90)))
         self.cc("For a real symmetric matrix, the smallest and largest eigenvalues are the minimum and maximum of the Rayleigh quotient.", 3.1)
