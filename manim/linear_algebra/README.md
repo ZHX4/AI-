@@ -24,6 +24,17 @@ The course is designed for an AI/ML student. Every lesson emphasizes coordinate 
 | 14 | Conditioning & Numerical Stability | condition number, error amplification |
 | 15 | Linear Algebra for ML | representations, layers, loss geometry, gradients |
 
+## Repository layout
+
+```text
+manim/linear_algebra/
+├── course.py          # all 15 lesson scenes
+├── utils.py           # reusable teaching/animation primitives
+├── render_all.py      # renders every lesson sequentially
+├── pyproject.toml     # pins Manim Community 0.20.1
+└── README.md
+```
+
 ## Setup
 
 The project targets **Manim Community 0.20.1**. The current Manim documentation recommends an isolated environment and specifically recommends `uv` for project dependency management.
@@ -38,7 +49,15 @@ uv run manim checkhealth
 Render one lesson:
 
 ```bash
-uv run manim -pqh 01_vectors.py Lesson01Vectors
+uv run manim -pqh course.py Lesson01Vectors
+```
+
+Examples:
+
+```bash
+uv run manim -pqh course.py Lesson08ProjectionLeastSquares
+uv run manim -pqh course.py Lesson10Eigen
+uv run manim -pqh course.py Lesson13PCA
 ```
 
 Render the full course:
