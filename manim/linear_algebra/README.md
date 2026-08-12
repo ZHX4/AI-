@@ -1,43 +1,74 @@
 # Linear Algebra — Manim Visual Course
 
-A long-form, first-principles linear algebra course rendered with **Manim Community**.
+A long-form, first-principles linear algebra course for AI/ML students, built with Manim Community.
 
-The course is designed for an AI/ML student. Every lesson emphasizes coordinate geometry, explicit formulas, worked numerical examples, and animated transformations.
+This project is being developed as a **visual textbook**, not a formula checklist. Each major idea should receive its own animation, geometric interpretation, derivation, worked examples, conceptual recap, and CC-style on-screen explanations.
 
-## Course sequence
+## Course architecture
 
-| # | Lesson | Core ideas |
-|---|---|---|
-| 01 | Vectors | coordinates, displacement, magnitude, negation |
-| 02 | Vector Operations | addition, subtraction, scalar multiplication, linear combinations |
-| 03 | Span, Basis & Dimension | span, independence, basis, dimension |
-| 04 | Matrices as Transformations | matrix action, basis vectors, shear, rotation |
-| 05 | Matrix Multiplication & Systems | composition, Ax=b, geometric solution |
-| 06 | Determinant & Inverse | area scaling, collapse, invertibility |
-| 07 | Dot Product & Geometry | length, angle, orthogonality, normalization |
-| 08 | Projection & Least Squares | closest point, residual, least-squares intuition |
-| 09 | Rank & Null Space | independent information, rank, null space |
-| 10 | Eigenvalues & Eigenvectors | invariant directions, characteristic equation, diagonalization |
-| 11 | Symmetric Matrices & Quadratic Forms | xᵀAx, level sets, positive definiteness |
-| 12 | SVD | orthogonal directions, singular values, rotation/stretch/rotation |
-| 13 | PCA | centering, covariance, variance directions, dimensionality reduction |
-| 14 | Conditioning & Numerical Stability | condition number, error amplification |
-| 15 | Linear Algebra for ML | representations, layers, loss geometry, gradients |
+The curriculum is organized into 13 parts:
+
+1. **Foundations** — scalars, vectors, coordinates, operations, magnitude, linear combinations
+2. **Vector Spaces** — span, independence, basis, dimension, subspaces, coordinates
+3. **Matrices** — matrix-vector multiplication, matrix operations, composition, transpose, inverse
+4. **Systems of Equations** — Ax=b, elimination, row operations, RREF, solution geometry
+5. **Geometry** — dot products, angles, orthogonality, projections, Gram-Schmidt
+6. **Determinants** — area/volume scaling, orientation, invertibility, determinant properties
+7. **Fundamental Subspaces** — rank, nullity, column/row/null/left-null spaces, rank-nullity
+8. **Eigenvalues** — eigenvectors, characteristic polynomial, multiplicities, diagonalization, powers
+9. **Symmetric Matrices** — spectral theorem, orthogonal eigenvectors, quadratic forms, definiteness
+10. **Decompositions** — LU, QR, change of basis, orthogonal matrices, linear operators
+11. **SVD** — singular vectors, singular values, geometry, pseudoinverse, low-rank approximation
+12. **PCA** — centering, covariance, variance, principal directions, projection, reconstruction
+13. **Numerical + ML Connections** — conditioning, stability, least squares, regression, neural networks, embeddings
+
+## Teaching standard
+
+Every lesson should follow the pattern:
+
+**intuition → geometric construction → algebra → worked example → generalization → visual recap**
+
+CC-style text is part of the lesson itself. Captions should explain what the viewer is seeing, why the next animation happens, and how the geometry corresponds to the equation. The goal is that the lesson remains understandable even with no spoken narration.
+
+The visual language should use coordinate axes, labeled vectors, moving points, transformed grids, highlighted equations, pauses for reasoning, and deliberate transitions. Avoid rushing from formula to formula.
+
+The style should be inspired by the **teaching principles** of excellent mathematical animation—especially intuition, visualization, and gradual abstraction—without copying another creator's scripts, narration, or exact presentation.
+
+## Part I status
+
+Part I is the first rebuilt section and currently contains eight long-form lessons:
+
+- `Part1_01_ScalarsAndVectors`
+- `Part1_02_CoordinatesAndComponents`
+- `Part1_03_VectorAddition`
+- `Part1_04_VectorSubtraction`
+- `Part1_05_ScalingAndUnitVectors`
+- `Part1_06_MagnitudeAndDistance`
+- `Part1_07_LinearCombinations`
+- `Part1_08_FoundationsRecap`
+
+See [`parts/PART_I_FOUNDATIONS.md`](parts/PART_I_FOUNDATIONS.md).
 
 ## Repository layout
 
 ```text
 manim/linear_algebra/
-├── course.py          # all 15 lesson scenes
-├── utils.py           # reusable teaching/animation primitives
-├── render_all.py      # renders every lesson sequentially
-├── pyproject.toml     # pins Manim Community 0.20.1
+├── course.py
+├── utils.py
+├── render_all.py
+├── render_part1.py
+├── parts/
+│   ├── __init__.py
+│   ├── part_01_foundations.py
+│   └── PART_I_FOUNDATIONS.md
+├── __init__.py
+├── pyproject.toml
 └── README.md
 ```
 
 ## Setup
 
-The project targets **Manim Community 0.20.1**. The current Manim documentation recommends an isolated environment and specifically recommends `uv` for project dependency management.
+The project targets **Manim Community 0.20.1**.
 
 ```bash
 cd manim/linear_algebra
@@ -46,30 +77,16 @@ uv sync
 uv run manim checkhealth
 ```
 
-Render one lesson:
+Render a Part I lesson:
 
 ```bash
-uv run manim -pqh course.py Lesson01Vectors
+uv run manim -pqh render_part1.py Part1_01_ScalarsAndVectors
 ```
 
-Examples:
+Render the whole Part I sequence with the commands listed in `parts/PART_I_FOUNDATIONS.md`.
 
-```bash
-uv run manim -pqh course.py Lesson08ProjectionLeastSquares
-uv run manim -pqh course.py Lesson10Eigen
-uv run manim -pqh course.py Lesson13PCA
-```
+Generated media stays outside Git.
 
-Render the full course:
+## Important distinction
 
-```bash
-uv run python render_all.py
-```
-
-Rendered media is intentionally ignored by Git.
-
-## Pedagogical order
-
-vectors → linear combinations → span/basis → transformations → systems → inner products/projections → rank → eigenvectors → SVD/PCA → numerical stability → ML.
-
-Each scene is deliberately longer than a short-form animation: it introduces the idea, constructs the geometry, shows the equations, works a numerical example, and then interprets the result.
+The original `course.py` is retained as the initial 15-topic prototype. The new `parts/` structure is the **authoritative long-form curriculum** going forward. New parts should be implemented to the deeper teaching standard above rather than simply adding another topic-level scene.
