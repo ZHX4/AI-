@@ -82,7 +82,7 @@ def main():
     assert isclose(coefficient, 8 / 5)
     assert all(isclose(x, y) for x, y in zip(projection, [16 / 5, 8 / 5]))
     assert all(isclose(x, y) for x, y in zip(residual, [-1 / 5, 2 / 5]))
-    assert isclose(dot(a, residual), 0.0)
+    assert isclose(dot(a, residual), 0.0, abs_tol=1e-12)
 
     # Orthogonal complement example.
     s = [2, 1]
@@ -96,12 +96,12 @@ def main():
     proj = [0.5, 0.5]
     v2 = [u2[i] - proj[i] for i in range(2)]
     assert v2 == [0.5, -0.5]
-    assert isclose(dot(v1, v2), 0.0)
+    assert isclose(dot(v1, v2), 0.0, abs_tol=1e-12)
     q1 = [x / norm(v1) for x in v1]
     q2 = [x / norm(v2) for x in v2]
     assert isclose(norm(q1), 1.0)
     assert isclose(norm(q2), 1.0)
-    assert isclose(dot(q1, q2), 0.0)
+    assert isclose(dot(q1, q2), 0.0, abs_tol=1e-12)
     assert r"Q=\begin{bmatrix}\vec q_1&\vec q_2\end{bmatrix},\qquad Q^TQ=I" in source
 
     renderer = (ROOT / "render_part5.py").read_text(encoding="utf-8")
