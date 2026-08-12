@@ -1,0 +1,26 @@
+name: Verify Manim Part I
+
+on:
+  push:
+    paths:
+      - "manim/linear_algebra/**"
+      - ".github/workflows/verify-manim-part1.yml"
+  pull_request:
+    paths:
+      - "manim/linear_algebra/**"
+      - ".github/workflows/verify-manim-part1.yml"
+
+jobs:
+  verify-part1:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: manim/linear_algebra
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync
+      - run: python -m py_compile parts/part_01_foundations_final.py verify_part1.py
+      - run: uv run python verify_part1.py
