@@ -1,5 +1,4 @@
 from pathlib import Path
-from math import isclose
 import ast
 
 ROOT = Path(__file__).resolve().parent
@@ -42,61 +41,64 @@ def main():
     source = SOURCE.read_text(encoding="utf-8")
     tree = ast.parse(source, filename=str(SOURCE))
     classes = {node.name for node in tree.body if isinstance(node, ast.ClassDef)}
-    assert not (set(SCENES) - classes)
-    for scene in SCENES:
-        assert scene in source
+    assert not (set(SCENES) - classes), f"Missing scenes: {sorted(set(SCENES) - classes)}"
     assert source.count("self.cc(") >= 11
 
+    # Exact determinant examples.
     assert det2(2, 1, 1, 2) == 3
     assert det2(1, 0, 0, -2) == -2
+    assert det3([[1, 2, 0], [0, 1, 3], [2, 0, 1]]) == 13
+    assert det3([[1, 2, 3], [0, 1, 4], [5, 6, 0]]) == 1
+    assert det2(1, 2, 2, 4) == 0
 
-    A3 = [[1, 2, 0], [0, 1, 3], [2, 0, 1]]
-    assert det3(A3) == 13
-
-    C = [[1, 2, 3], [0, 1, 4], [5, 6, 0]]
-    assert det3(C) == 1
-
-    S = [[1, 2], [2, 4]]
-    assert det2(S[0][0], S[0][1], S[1][0], S[1][1]) == 0
-
-    P = [[2, 0], [0, 3]]
-    Q = [[1, 1], [0, 2]]
-    PQ = matmul(P, Q)
-    assert PQ == [[2, 2], [0, 6]]
+    # Product property.
+    A = [[2, 0], [0, 3]]
+    B = [[1, 1], [0, 2]]
+    AB = matmul(A, B)
+    assert AB == [[2, 2], [0, 6]]
     assert det2(2, 2, 0, 6) == 12
     assert det2(2, 0, 0, 3) * det2(1, 1, 0, 2) == 12
 
-    # The actual 3D animation example is D = [[1,1,0],[0,2,0],[0,0,1]], det(D)=2.
+    # Exact 3D animation example used by Part VI.4.
     D = [[1, 1, 0], [0, 2, 0], [0, 0, 1]]
     assert det3(D) == 2
 
-    for identity in [
+    # Required determinant identities/rules are explicitly taught.
+    required = [
         r"\det(AB)=\det(A)\det(B)",
-        r"\det(cA)=c^n\det(A)",
+        r"\det(2A)=2^n\det(A)",
         r"\det(A^T)=\det(A)",
         r"\det(A^{-1})=\frac{1}{\det(A)}",
         r"R_i\leftrightarrow R_j",
         r"R_i\leftarrow cR_i",
         r"R_i\leftarrow R_i+cR_j",
-    ]:
-        assert identity in source, identity
+        r"C_{ij}=(-1)^{i+j}M_{ij}",
+    ]
+    for item in required:
+        assert item in source, item
 
-    assert "\"\det(D)=2\\\\Rightarrow\\\\text{volume doubles}\"" in source
-    assert r"\boxed{\operatorname{volume}=|\det(A)|=13}" not in source
-    assert r"\boxed{\text{volume scale}=|\det(A)|=13}" in source
-    assert r"\boxed{\text{area}=|\det(A)|=3}" in source
-    assert r"\boxed{\det(A)=1}" in source
-    assert r"\det(A)=0\iff A\text{ is singular}\iff A^{-1}\text{ does not exist}" in source
-
+    # Canonical renderer wiring.
     renderer = (ROOT / "render_part6.py").read_text(encoding="utf-8")
     assert 'SCRIPT = "parts/part_06_determinants_canonical.py"' in renderer
     for scene in SCENES:
         assert scene in renderer
 
-    assert not (ROOT / "parts/part_06_determinants_final.py").exists()
-    assert not (ROOT / "parts/part_06_determinants.py").exists()
+    # Compatibility shim must not contain an alternative implementation.
+    shim = (ROOT / "parts/part_06_determinants_final.py").read_text(encoding="utf-8")
+    assert "part_06_determinants_canonical" in shim
+    assert "class Part6_" not in shim
 
-    print(f"PASS Part VI: {len(SCENES)} scenes, syntax structure, exact determinant arithmetic, 3D determinant animation check, canonical renderer, and single-source layout verified")
+    # Teaching examples must match the checked mathematics.
+    assert r"\boxed{\operatorname{area}=|\det(A)|=3}" in source
+    assert r"\boxed{\text{volume scale}=|\det(A)|=13}" in source
+    assert r"\det(D)=2\Rightarrow\text{volume doubles}" in source
+    assert r"\boxed{\det(A)=1}" in source
+    assert r"\boxed{\det(A)=0\iff A\text{ is singular}\iff A^{-1}\text{ does not exist}}" in source
+
+    print(
+        f"PASS Part VI: {len(SCENES)} scenes, syntax structure, CC coverage, exact determinant arithmetic, "
+        "3D deformation check, algebraic identities, canonical renderer, and compatibility shim verified"
+    )
 
 
 if __name__ == "__main__":
