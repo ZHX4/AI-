@@ -55,10 +55,13 @@ def main():
     R2 = [A[1][j] - 2 * A[0][j] for j in range(2)] + [b[1] - 2 * b[0]]
     assert R2 == [0, -3, -9]
 
-    # Back-substitution regression.
-    assert 10 / 5 == 2
-    assert (7 - 2 * 2) / 3 == 1
-    assert 4 - 2 * 1 + 2 == 4
+    # Back-substitution regression for the exact triangular system shown.
+    z = 10 / 5
+    y = (7 - 2 * z) / 3
+    x_back = 4 - 2 * y + z
+    assert (z, y, x_back) == (2, 1, 4)
+    assert "x+2y-z=4\\Rightarrow x=4" in source
+    assert "(x,y,z)=(4,1,2)" in source
 
     # RREF example shown in the lesson.
     assert "1&0&2" in source and "0&1&3" in source
@@ -83,6 +86,7 @@ def main():
     assert matvec(A3, x3) == b3
     assert "-\\frac73" in source
     assert "-7" in source
+    assert "(x,y,z)=(1,2,3)" in source
 
     renderer = (ROOT / "render_part4.py").read_text(encoding="utf-8")
     assert 'SCRIPT = "parts/part_04_systems_final.py"' in renderer
