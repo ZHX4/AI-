@@ -2,7 +2,7 @@ from pathlib import Path
 import subprocess
 
 ROOT = Path(__file__).resolve().parent
-SCRIPT = "parts/part_06_determinants_final.py"
+SCRIPT = "parts/part_06_determinants_canonical.py"
 SCENES = [
     "Part6_01_WhatDeterminantMeasures",
     "Part6_02_TwoByTwoSignedArea",
@@ -16,6 +16,7 @@ SCENES = [
     "Part6_10_DeterminantAndProducts",
     "Part6_11_DeterminantMastery",
 ]
+
 
 if __name__ == "__main__":
     for scene in SCENES:
