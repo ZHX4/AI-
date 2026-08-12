@@ -19,7 +19,7 @@ class SystemsLesson(LessonScene):
         return MathTex(latex).scale(scale).to_edge(RIGHT, buff=0.25).shift(UP * y)
 
     def line(self, ax, slope, intercept, color):
-        return ax.plot(lambda x: slope * x + intercept, color=color, x_range=[-1, 7])
+        return ax.plot(lambda x: slope * x + intercept, color=color, x_range=[0, 4])
 
     def dot(self, ax, xy, color=HIGHLIGHT, radius=0.09):
         return Dot(ax.c2p(*xy), radius=radius, color=color)
