@@ -190,7 +190,7 @@ class Part2_11_FourFundamentalSubspaces(VectorSpaceLesson):
         self.cc("We use one concrete matrix so all four fundamental subspaces have a geometric meaning.", 3.3)
         self.play(Write(self.eq(r"A=\begin{bmatrix}1&2\\0&0\end{bmatrix}", .90, 2.0)))
         col = Arrow(ax.c2p(0,0), ax.c2p(1,0), buff=0, color=VECTOR_A, stroke_width=7)
-        row = Arrow(ax.c2p(0,0), ax.c2p(2,1), buff=0, color=VECTOR_B, stroke_width=7)
+        row = Arrow(ax.c2p(0,0), ax.c2p(1,2), buff=0, color=VECTOR_B, stroke_width=7)
         null = Arrow(ax.c2p(0,0), ax.c2p(-2,1), buff=0, color=HIGHLIGHT, stroke_width=7)
         left = Arrow(ax.c2p(0,0), ax.c2p(0,1), buff=0, color=YELLOW_C, stroke_width=7)
         self.play(GrowArrow(col), GrowArrow(row), GrowArrow(null), GrowArrow(left))
