@@ -74,7 +74,7 @@ class Part3_04_MatrixAsTransformation(MatrixLesson):
     def construct(self):
         self.title("Part III.4 — Matrix as a Transformation", "The whole plane deforms from the motion of two basis directions")
         grid = NumberPlane(
-            x_range=[-5, 5, 1], y_range=[-5, 5, 1], x_length=8.5, y_length=6.3,
+            x_range=[-4, 4, 1], y_range=[-3, 3, 1], x_length=8.0, y_length=6.0,
             background_line_style={"stroke_opacity": 0.18}, axis_config={"stroke_opacity": 0.75, "stroke_width": 2},
         )
         self.play(Create(grid))
@@ -91,7 +91,7 @@ class Part3_04_MatrixAsTransformation(MatrixLesson):
         l1_target = MathTex(r"Ae_1", color=VECTOR_A).next_to(e1.get_end(), UR, buff=0.10)
         l2_target = MathTex(r"Ae_2", color=VECTOR_B).next_to(e2.get_end(), UR, buff=0.10)
         self.play(Transform(l1, l1_target), Transform(l2, l2_target), run_time=0.8)
-        self.cc("The grid and both basis arrows deform together. That is what it means for A to act as a linear transformation.", 3.2)
+        self.cc("The grid and both basis arrows deform together. Because one grid unit equals one world unit, the visual motion matches the matrix arithmetic exactly.", 3.3)
         self.play(Write(self.eq(r"\vec x\mapsto A\vec x", 0.92, -1.15)))
         self.play(Write(self.eq(r"Ae_1=\begin{bmatrix}2\\1\end{bmatrix},\quad Ae_2=\begin{bmatrix}1\\2\end{bmatrix}", 0.59, -2.0)))
         self.wait(2)
