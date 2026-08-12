@@ -3,7 +3,7 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parent
 SCENES = [
-    ("parts/part_02_vector_spaces.py", "Part2_01_Span"),
+    ("parts/part_02_vector_spaces_corrected.py", "Part2_01_Span"),
     ("parts/part_02_vector_spaces.py", "Part2_02_LinearDependence"),
     ("parts/part_02_vector_spaces.py", "Part2_03_LinearIndependence"),
     ("parts/part_02_vector_spaces.py", "Part2_04_Basis"),
@@ -13,7 +13,7 @@ SCENES = [
     ("parts/part_02_vector_spaces.py", "Part2_08_ColumnSpace"),
     ("parts/part_02_vector_spaces.py", "Part2_09_RowSpaceAndNullSpace"),
     ("parts/part_02_vector_spaces.py", "Part2_10_RankNullityAndFourSpaces"),
-    ("parts/part_02_four_fundamental_subspaces.py", "Part2_11_FourFundamentalSubspaces"),
+    ("parts/part_02_vector_spaces_corrected.py", "Part2_11_FourFundamentalSubspaces"),
 ]
 
 if __name__ == "__main__":
