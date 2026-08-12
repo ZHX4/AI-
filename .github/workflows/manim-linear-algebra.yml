@@ -8,7 +8,7 @@ on:
   pull_request:
     paths:
       - "manim/linear_algebra/**"
-      - ".github/workflows/manim-linear-algebra.yml"
+      - ".github/workflows/manim-linear_algebra.yml"
 
 jobs:
   source-checks:
