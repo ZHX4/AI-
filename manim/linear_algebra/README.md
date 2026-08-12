@@ -12,7 +12,7 @@ The curriculum is organized into 13 parts:
 2. **Vector Spaces** — span, independence, basis, dimension, subspaces, nonstandard coordinates, fundamental subspaces
 3. **Matrices** — matrix structure, matrix-vector multiplication, columns, transformations, addition/scaling, multiplication, composition, identity, transpose, inverse
 4. **Systems of Equations** — Ax=b, geometric constraints, augmented matrices, row operations, Gaussian elimination, back substitution, RREF, solution cases
-5. **Geometry** — dot products, angles, orthogonality, projections, Gram-Schmidt
+5. **Geometry** — dot products, norms, distance, angles, orthogonality, projections, orthogonal complements, Gram-Schmidt
 6. **Determinants** — area/volume scaling, orientation, invertibility, determinant properties
 7. **Fundamental Subspaces** — rank, nullity, column/row/null/left-null spaces, rank-nullity
 8. **Eigenvalues** — eigenvectors, characteristic polynomial, multiplicities, diagonalization, powers
@@ -62,6 +62,24 @@ Part IV contains eleven long-form lessons in `parts/part_04_systems_final.py`:
 
 See [`parts/PART_IV_SYSTEMS.md`](parts/PART_IV_SYSTEMS.md).
 
+## Part V status
+
+Part V contains eleven long-form geometry lessons in `parts/part_05_geometry_final.py`:
+
+- `Part5_01_DotProductComputation`
+- `Part5_02_DotProductGeometry`
+- `Part5_03_NormAndVectorLength`
+- `Part5_04_DistanceBetweenPoints`
+- `Part5_05_AngleAndCauchySchwarz`
+- `Part5_06_Orthogonality`
+- `Part5_07_Projection`
+- `Part5_08_OrthogonalDecomposition`
+- `Part5_09_OrthogonalComplements`
+- `Part5_10_GramSchmidt`
+- `Part5_11_GeometryMastery`
+
+See [`parts/PART_V_GEOMETRY.md`](parts/PART_V_GEOMETRY.md).
+
 ## Repository layout
 
 ```text
@@ -73,10 +91,12 @@ manim/linear_algebra/
 ├── render_part2.py                        # authoritative Part II renderer
 ├── render_part3.py                        # authoritative Part III renderer
 ├── render_part4.py                        # authoritative Part IV renderer
+├── render_part5.py                        # authoritative Part V renderer
 ├── verify_part1.py                        # Part I source checks
 ├── verify_part2.py                        # Part II source checks
 ├── verify_part3.py                        # Part III source checks
 ├── verify_part4.py                        # Part IV source checks
+├── verify_part5.py                        # Part V source checks
 ├── parts/
 │   ├── __init__.py
 │   ├── part_01_foundations_final.py
@@ -86,7 +106,9 @@ manim/linear_algebra/
 │   ├── part_03_matrices_final.py
 │   ├── PART_III_MATRICES.md
 │   ├── part_04_systems_final.py
-│   └── PART_IV_SYSTEMS.md
+│   ├── PART_IV_SYSTEMS.md
+│   ├── part_05_geometry_final.py
+│   └── PART_V_GEOMETRY.md
 ├── .github/workflows/manim-linear-algebra.yml
 ├── __init__.py
 ├── pyproject.toml
@@ -128,6 +150,12 @@ Render Part IV:
 uv run python render_part4.py
 ```
 
+Render Part V:
+
+```bash
+uv run python render_part5.py
+```
+
 Verify Part II:
 
 ```bash
@@ -144,6 +172,12 @@ Verify Part IV:
 
 ```bash
 uv run python verify_part4.py
+```
+
+Verify Part V:
+
+```bash
+uv run python verify_part5.py
 ```
 
 Generated media stays outside Git.
