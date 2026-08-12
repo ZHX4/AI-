@@ -21,12 +21,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Compile Part I and Part II sources
+      - name: Compile authoritative linear algebra sources
         run: |
           python -m py_compile parts/part_01_foundations_final.py
           python -m py_compile parts/part_02_vector_spaces.py
-          python -m py_compile parts/part_02_four_fundamental_subspaces.py
+          python -m py_compile parts/part_03_matrices_final.py
           python -m py_compile render_part1.py
           python -m py_compile render_part2.py
+          python -m py_compile render_part3.py
+          python -m py_compile verify_part2.py
+          python -m py_compile verify_part3.py
       - name: Verify Part II
         run: python verify_part2.py
+      - name: Verify Part III
+        run: python verify_part3.py
