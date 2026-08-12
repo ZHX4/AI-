@@ -31,6 +31,7 @@ jobs:
           python -m py_compile parts/part_06_determinants_final.py
           python -m py_compile parts/part_07_fundamental_subspaces_canonical.py
           python -m py_compile parts/part_08_eigenvalues_canonical.py
+          python -m py_compile parts/part_09_symmetric_matrices_final.py
           python -m py_compile render_part1.py
           python -m py_compile render_part2.py
           python -m py_compile render_part3.py
@@ -39,6 +40,7 @@ jobs:
           python -m py_compile render_part6.py
           python -m py_compile render_part7.py
           python -m py_compile render_part8.py
+          python -m py_compile render_part9.py
           python -m py_compile verify_part2.py
           python -m py_compile verify_part3.py
           python -m py_compile verify_part4.py
@@ -46,6 +48,7 @@ jobs:
           python -m py_compile verify_part6.py
           python -m py_compile verify_part7.py
           python -m py_compile verify_part8.py
+          python -m py_compile verify_part9.py
       - name: Verify Part II
         run: python verify_part2.py
       - name: Verify Part III
@@ -60,3 +63,5 @@ jobs:
         run: python verify_part7.py
       - name: Verify Part VIII
         run: python verify_part8.py
+      - name: Verify Part IX
+        run: python verify_part9.py
