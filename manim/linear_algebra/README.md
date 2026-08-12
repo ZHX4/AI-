@@ -13,7 +13,7 @@ The curriculum is organized into 13 parts:
 3. **Matrices** — matrix structure, matrix-vector multiplication, columns, transformations, addition/scaling, multiplication, composition, identity, transpose, inverse
 4. **Systems of Equations** — Ax=b, geometric constraints, augmented matrices, row operations, Gaussian elimination, back substitution, RREF, solution cases
 5. **Geometry** — dot products, norms, distance, angles, orthogonality, projections, orthogonal complements, Gram-Schmidt
-6. **Determinants** — area/volume scaling, orientation, invertibility, determinant properties
+6. **Determinants** — signed area/volume, orientation, determinant properties, row operations, cofactor expansion, invertibility
 7. **Fundamental Subspaces** — rank, nullity, column/row/null/left-null spaces, rank-nullity
 8. **Eigenvalues** — eigenvectors, characteristic polynomial, multiplicities, diagonalization, powers
 9. **Symmetric Matrices** — spectral theorem, orthogonal eigenvectors, quadratic forms, definiteness
@@ -80,6 +80,24 @@ Part V contains eleven long-form geometry lessons in `parts/part_05_geometry_fin
 
 See [`parts/PART_V_GEOMETRY.md`](parts/PART_V_GEOMETRY.md).
 
+## Part VI status
+
+Part VI contains eleven long-form determinant lessons in `parts/part_06_determinants_final.py`:
+
+- `Part6_01_WhatDeterminantMeasures`
+- `Part6_02_TwoByTwoSignedArea`
+- `Part6_03_DeterminantAsAreaScale`
+- `Part6_04_ThreeByThreeVolume`
+- `Part6_05_OrientationAndSign`
+- `Part6_06_DeterminantProperties`
+- `Part6_07_RowOperationsAndDeterminant`
+- `Part6_08_CofactorExpansion`
+- `Part6_09_DeterminantAndInvertibility`
+- `Part6_10_DeterminantAndProducts`
+- `Part6_11_DeterminantMastery`
+
+See [`parts/PART_VI_DETERMINANTS.md`](parts/PART_VI_DETERMINANTS.md).
+
 ## Repository layout
 
 ```text
@@ -92,11 +110,13 @@ manim/linear_algebra/
 ├── render_part3.py                        # authoritative Part III renderer
 ├── render_part4.py                        # authoritative Part IV renderer
 ├── render_part5.py                        # authoritative Part V renderer
+├── render_part6.py                        # authoritative Part VI renderer
 ├── verify_part1.py                        # Part I source checks
 ├── verify_part2.py                        # Part II source checks
 ├── verify_part3.py                        # Part III source checks
 ├── verify_part4.py                        # Part IV source checks
 ├── verify_part5.py                        # Part V source checks
+├── verify_part6.py                        # Part VI source checks
 ├── parts/
 │   ├── __init__.py
 │   ├── part_01_foundations_final.py
@@ -108,7 +128,9 @@ manim/linear_algebra/
 │   ├── part_04_systems_final.py
 │   ├── PART_IV_SYSTEMS.md
 │   ├── part_05_geometry_final.py
-│   └── PART_V_GEOMETRY.md
+│   ├── PART_V_GEOMETRY.md
+│   ├── part_06_determinants_final.py
+│   └── PART_VI_DETERMINANTS.md
 ├── .github/workflows/manim-linear-algebra.yml
 ├── __init__.py
 ├── pyproject.toml
@@ -156,6 +178,12 @@ Render Part V:
 uv run python render_part5.py
 ```
 
+Render Part VI:
+
+```bash
+uv run python render_part6.py
+```
+
 Verify Part II:
 
 ```bash
@@ -178,6 +206,12 @@ Verify Part V:
 
 ```bash
 uv run python verify_part5.py
+```
+
+Verify Part VI:
+
+```bash
+uv run python verify_part6.py
 ```
 
 Generated media stays outside Git.
