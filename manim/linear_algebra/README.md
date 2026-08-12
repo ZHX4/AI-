@@ -16,7 +16,7 @@ The curriculum is organized into 13 parts:
 6. **Determinants** — signed area/volume, orientation, determinant properties, row operations, cofactor expansion, invertibility
 7. **Fundamental Subspaces** — rank, pivots, column/row/null/left-null spaces, rank-nullity, orthogonality pairs
 8. **Eigenvalues** — eigenvectors, characteristic polynomial, eigenspaces, multiplicities, diagonalization, powers, dynamical behavior
-9. **Symmetric Matrices** — spectral theorem, orthogonal eigenvectors, quadratic forms, definiteness
+9. **Symmetric Matrices** — spectral theorem, orthogonal eigenvectors, quadratic forms, principal axes, Rayleigh quotient, definiteness
 10. **Decompositions** — LU, QR, change of basis, orthogonal matrices, linear operators
 11. **SVD** — singular vectors, singular values, geometry, pseudoinverse, low-rank approximation
 12. **PCA** — centering, covariance, variance, principal directions, projection, reconstruction
@@ -32,93 +32,56 @@ CC-style text is part of the lesson itself. Captions explain what the viewer is 
 
 The visual language uses coordinate axes, labeled vectors, moving points, subspaces, transformed grids, highlighted equations, pauses for reasoning, and deliberate transitions. The teaching philosophy is inspired by high-quality visual mathematics without copying another creator's scripts, narration, or exact presentation.
 
-## Part I status
+## Part I–VIII status
 
-Part I contains eight long-form lessons. See [`parts/PART_I_FOUNDATIONS.md`](parts/PART_I_FOUNDATIONS.md).
+Parts I–VIII are implemented as the authoritative long-form curriculum. Each has its own renderer, verifier, curriculum document, and CI coverage.
 
-## Part II status
+## Part IX status
 
-Part II contains eleven long-form lessons in `parts/part_02_vector_spaces.py`. See [`parts/PART_II_VECTOR_SPACES.md`](parts/PART_II_VECTOR_SPACES.md).
+Part IX contains eleven long-form symmetric-matrix lessons in `parts/part_09_symmetric_matrices_final.py`:
 
-## Part III status
+- `Part9_01_SymmetryIntuition`
+- `Part9_02_OrthogonalEigenvectors`
+- `Part9_03_SpectralTheorem`
+- `Part9_04_BuildingQAndLambda`
+- `Part9_05_QuadraticForms`
+- `Part9_06_PrincipalAxes`
+- `Part9_07_RayleighQuotient`
+- `Part9_08_PositiveDefinite`
+- `Part9_09_NegativeAndIndefinite`
+- `Part9_10_SemidefiniteAndTests`
+- `Part9_11_SymmetricMatrixMastery`
 
-Part III contains eleven long-form lessons in `parts/part_03_matrices_final.py`. See [`parts/PART_III_MATRICES.md`](parts/PART_III_MATRICES.md).
-
-## Part IV status
-
-Part IV contains eleven long-form lessons in `parts/part_04_systems_final.py`. See [`parts/PART_IV_SYSTEMS.md`](parts/PART_IV_SYSTEMS.md).
-
-## Part V status
-
-Part V contains eleven long-form geometry lessons in `parts/part_05_geometry_final.py`. See [`parts/PART_V_GEOMETRY.md`](parts/PART_V_GEOMETRY.md).
-
-## Part VI status
-
-Part VI contains eleven long-form determinant lessons in `parts/part_06_determinants_canonical.py`. See [`parts/PART_VI_DETERMINANTS.md`](parts/PART_VI_DETERMINANTS.md).
-
-## Part VII status
-
-Part VII contains eleven long-form fundamental-subspace lessons in `parts/part_07_fundamental_subspaces_canonical.py`. See [`parts/PART_VII_FUNDAMENTAL_SUBSPACES.md`](parts/PART_VII_FUNDAMENTAL_SUBSPACES.md).
-
-## Part VIII status
-
-Part VIII contains eleven long-form eigenvalue lessons in `parts/part_08_eigenvalues_canonical.py`:
-
-- `Part8_01_EigenvectorIntuition`
-- `Part8_02_EigenEquation`
-- `Part8_03_CharacteristicPolynomial`
-- `Part8_04_FindingEigenvectors`
-- `Part8_05_GeometricEigenspaces`
-- `Part8_06_AlgebraicVsGeometricMultiplicity`
-- `Part8_07_Diagonalization`
-- `Part8_08_MatrixPowers`
-- `Part8_09_DynamicsAndEigenDirections`
-- `Part8_10_EigenvaluesBeyond2D`
-- `Part8_11_EigenvalueMastery`
-
-See [`parts/PART_VIII_EIGENVALUES.md`](parts/PART_VIII_EIGENVALUES.md).
+See [`parts/PART_IX_SYMMETRIC_MATRICES.md`](parts/PART_IX_SYMMETRIC_MATRICES.md).
 
 ## Repository layout
 
 ```text
 manim/linear_algebra/
-├── course.py                              # initial 15-topic prototype
-├── utils.py                               # shared animation/teaching helpers
-├── render_all.py                          # prototype renderer
-├── render_part1.py                        # authoritative Part I renderer
-├── render_part2.py                        # authoritative Part II renderer
-├── render_part3.py                        # authoritative Part III renderer
-├── render_part4.py                        # authoritative Part IV renderer
-├── render_part5.py                        # authoritative Part V renderer
-├── render_part6.py                        # authoritative Part VI renderer
-├── render_part7.py                        # authoritative Part VII renderer
-├── render_part8.py                        # authoritative Part VIII renderer
-├── verify_part1.py                        # Part I source checks
-├── verify_part2.py                        # Part II source checks
-├── verify_part3.py                        # Part III source checks
-├── verify_part4.py                        # Part IV source checks
-├── verify_part5.py                        # Part V source checks
-├── verify_part6.py                        # Part VI source checks
-├── verify_part7.py                        # Part VII source checks
-├── verify_part8.py                        # Part VIII source checks
+├── course.py
+├── utils.py
+├── render_all.py
+├── render_part1.py ... render_part9.py
+├── verify_part1.py ... verify_part9.py
 ├── parts/
-│   ├── __init__.py
 │   ├── part_01_foundations_final.py
-│   ├── PART_I_FOUNDATIONS.md
 │   ├── part_02_vector_spaces.py
-│   ├── PART_II_VECTOR_SPACES.md
 │   ├── part_03_matrices_final.py
-│   ├── PART_III_MATRICES.md
 │   ├── part_04_systems_final.py
-│   ├── PART_IV_SYSTEMS.md
 │   ├── part_05_geometry_final.py
-│   ├── PART_V_GEOMETRY.md
 │   ├── part_06_determinants_canonical.py
-│   ├── PART_VI_DETERMINANTS.md
 │   ├── part_07_fundamental_subspaces_canonical.py
-│   ├── PART_VII_FUNDAMENTAL_SUBSPACES.md
 │   ├── part_08_eigenvalues_canonical.py
-│   └── PART_VIII_EIGENVALUES.md
+│   ├── part_09_symmetric_matrices_final.py
+│   ├── PART_I_FOUNDATIONS.md
+│   ├── PART_II_VECTOR_SPACES.md
+│   ├── PART_III_MATRICES.md
+│   ├── PART_IV_SYSTEMS.md
+│   ├── PART_V_GEOMETRY.md
+│   ├── PART_VI_DETERMINANTS.md
+│   ├── PART_VII_FUNDAMENTAL_SUBSPACES.md
+│   ├── PART_VIII_EIGENVALUES.md
+│   └── PART_IX_SYMMETRIC_MATRICES.md
 ├── .github/workflows/manim-linear-algebra.yml
 ├── __init__.py
 ├── pyproject.toml
@@ -136,20 +99,20 @@ uv sync
 uv run manim checkhealth
 ```
 
-Render Part VIII:
+Render Part IX:
 
 ```bash
-uv run python render_part8.py
+uv run python render_part9.py
 ```
 
-Verify Part VIII:
+Verify Part IX:
 
 ```bash
-uv run python verify_part8.py
+uv run python verify_part9.py
 ```
 
 Generated media stays outside Git.
 
 ## Important distinction
 
-The original `course.py` remains as the initial 15-topic prototype. The `parts/` structure is the **authoritative long-form curriculum** going forward. New parts must follow the deeper teaching standard above rather than adding shallow topic-level scenes.
+The original `course.py` remains as the initial prototype. The `parts/` structure is the **authoritative long-form curriculum** going forward. New parts must follow the deeper teaching standard above rather than adding shallow topic-level scenes.
