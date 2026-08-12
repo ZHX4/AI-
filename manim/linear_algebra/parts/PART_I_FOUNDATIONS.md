@@ -1,73 +1,103 @@
 # Part I — Foundations
 
-Part I is the beginning of the long-form visual linear algebra course. It is intentionally slower than a typical tutorial: each lesson introduces intuition, constructs the geometry, writes the algebra, works a numerical example, and closes with a conceptual takeaway.
+Part I is the first complete teaching unit of the visual linear algebra course. It is deliberately slow and explanatory: intuition comes first, the geometry is constructed on screen, the algebra is introduced when it becomes necessary, and each lesson contains a concrete numerical example.
 
-Every lesson uses on-screen **CC-style explanation text** so the viewer can follow the reasoning even without narration.
+Every lesson uses **CC-style on-screen explanation text**. The CC is written as lesson narration, not as a label: it explains what the viewer should notice, why the step works, and what concept it prepares for next.
 
 ## Lessons
 
-### I.1 Scalars vs Vectors
-- scalar vs directional information
-- displacement as the core vector idea
-- why a vector can move without changing
-- coordinate representation
+### I.1 — Scalars vs Vectors
+- scalar quantities versus directional quantities
+- magnitude and direction
+- displacement as the core vector interpretation
+- translating a vector without changing the vector
+- why vectors describe changes rather than locations
 
-### I.2 Coordinates and Components
+### I.2 — Coordinates and Components
+- coordinate axes and component interpretation
 - x/y components
-- column-vector representation
+- column-vector notation
 - negative components
-- coordinates vs the underlying geometric vector
+- coordinates as a representation relative to a coordinate system
 
-### I.3 Vector Addition
-- componentwise addition
+### I.3 — Vector Addition
+- combining displacements
 - tip-to-tail construction
 - parallelogram construction
-- geometric meaning of the result
+- componentwise addition
+- geometric and algebraic agreement
 
-### I.4 Vector Subtraction
-- displacement from one vector endpoint to another
-- subtraction as addition of an opposite
-- geometric meaning of a difference vector
+### I.4 — Vector Subtraction
+- difference as a displacement between endpoints
+- componentwise subtraction
+- opposite vectors
+- subtraction as addition of an inverse
 
-### I.5 Scaling and Unit Vectors
-- positive and negative scalar multiplication
-- length scaling
-- direction reversal
-- normalization and unit vectors
+### I.5 — Scaling and Unit Vectors
+- positive scalar multiplication
+- shrinking and stretching
+- negative scalar multiplication and direction reversal
+- magnitude under scaling
+- normalization
+- unit vectors and why direction-only representations matter
 
-### I.6 Magnitude and Distance
-- Pythagorean interpretation
-- vector norm
-- distance as the norm of a difference
-- worked coordinate example
+### I.6 — Magnitude and Distance
+- vector norm from the Pythagorean theorem
+- a complete 3-4-5 numerical example
+- distance between arbitrary points
+- the difference vector as the bridge from points to vectors
 
-### I.7 Linear Combinations
-- scaling and combining multiple vectors
-- geometric construction
+### I.7 — Linear Combinations
+- scaling several vectors
+- tip-to-tail construction of a combination
 - componentwise calculation
-- why linear combinations become the language of span, basis, and matrices
+- a bounded worked example that stays inside the axes
+- why linear combinations lead directly to span and basis
 
-### I.8 Foundations Recap
-- one mental model connecting all Part I operations
-- key equations
-- conceptual recap before moving to vector spaces
+### I.8 — Vector Algebra and Mastery
+- commutativity
+- associativity
+- additive identity and inverse
+- distributivity over vector addition
+- scalar distributivity
+- a complete worked combination: `2a - b`
+- final conceptual bridge to vector spaces
+
+## Lesson design standard
+
+Every lesson follows the same teaching rhythm:
+
+1. **Question / motivation** — what problem are we trying to represent?
+2. **Geometric construction** — show the idea with axes, arrows, points, or transformations.
+3. **CC explanation** — explain the visual change in complete sentences.
+4. **Equation** — introduce the symbolic form only after the visual meaning is established.
+5. **Worked example** — calculate with explicit numerical values.
+6. **Interpretation** — connect the calculation back to the geometry.
+7. **Transition** — explain why the current idea is needed for the next part.
+
+The course is inspired by the broader philosophy of visual mathematics: build intuition first, use animation to expose structure, and let equations explain the geometry rather than replace it. It does not copy another creator's scripts, narration, or exact presentation.
 
 ## Rendering
 
 From `manim/linear_algebra`:
 
 ```bash
-uv run manim -pqh render_part1.py Part1_01_ScalarsAndVectors
+uv run manim -pqh parts/part_01_foundations.py Part1_01_ScalarsAndVectors
 ```
 
-Or render all Part I scenes:
+Render all eight lessons:
 
 ```bash
-for scene in Part1_01_ScalarsAndVectors Part1_02_CoordinatesAndComponents Part1_03_VectorAddition Part1_04_VectorSubtraction Part1_05_ScalingAndUnitVectors Part1_06_MagnitudeAndDistance Part1_07_LinearCombinations Part1_08_FoundationsRecap; do
-  uv run manim -qh render_part1.py "$scene" || exit 1
-done
+uv run python render_part1.py
 ```
 
-## Teaching standard
+Individual scenes can also be rendered directly with Manim by using their class names.
 
-The target is not a compressed formula sheet. Each scene should make the viewer understand **why** the formula exists before asking them to remember it. Animations should expose the connection between coordinates, arrows, geometry, and algebra rather than treating them as separate subjects.
+## Quality requirements
+
+- Keep all important geometric objects inside the visible coordinate range.
+- Use explicit numerical examples rather than only symbolic formulas.
+- Do not introduce a formula without explaining the geometric meaning behind it.
+- Use CC text frequently enough that a viewer can follow the lesson without audio.
+- Leave small processing pauses after nontrivial constructions.
+- Reuse terminology consistently across later parts.
