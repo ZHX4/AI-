@@ -15,7 +15,7 @@ The curriculum is organized into 13 parts:
 5. **Geometry** — dot products, norms, distance, angles, orthogonality, projections, orthogonal complements, Gram-Schmidt
 6. **Determinants** — signed area/volume, orientation, determinant properties, row operations, cofactor expansion, invertibility
 7. **Fundamental Subspaces** — rank, pivots, column/row/null/left-null spaces, rank-nullity, orthogonality pairs
-8. **Eigenvalues** — eigenvectors, characteristic polynomial, multiplicities, diagonalization, powers
+8. **Eigenvalues** — eigenvectors, characteristic polynomial, eigenspaces, multiplicities, diagonalization, powers, dynamical behavior
 9. **Symmetric Matrices** — spectral theorem, orthogonal eigenvectors, quadratic forms, definiteness
 10. **Decompositions** — LU, QR, change of basis, orthogonal matrices, linear operators
 11. **SVD** — singular vectors, singular values, geometry, pseudoinverse, low-rank approximation
@@ -54,39 +54,29 @@ Part V contains eleven long-form geometry lessons in `parts/part_05_geometry_fin
 
 ## Part VI status
 
-Part VI contains eleven long-form determinant lessons in `parts/part_06_determinants_canonical.py`:
-
-- `Part6_01_WhatDeterminantMeasures`
-- `Part6_02_TwoByTwoSignedArea`
-- `Part6_03_DeterminantAsAreaScale`
-- `Part6_04_ThreeByThreeVolume`
-- `Part6_05_OrientationAndSign`
-- `Part6_06_DeterminantProperties`
-- `Part6_07_RowOperationsAndDeterminant`
-- `Part6_08_CofactorExpansion`
-- `Part6_09_DeterminantAndInvertibility`
-- `Part6_10_DeterminantAndProducts`
-- `Part6_11_DeterminantMastery`
-
-See [`parts/PART_VI_DETERMINANTS.md`](parts/PART_VI_DETERMINANTS.md). The older `part_06_determinants_final.py` path is retained only as a compatibility shim.
+Part VI contains eleven long-form determinant lessons in `parts/part_06_determinants_canonical.py`. See [`parts/PART_VI_DETERMINANTS.md`](parts/PART_VI_DETERMINANTS.md).
 
 ## Part VII status
 
-Part VII contains eleven long-form fundamental-subspace lessons in `parts/part_07_fundamental_subspaces_canonical.py`:
+Part VII contains eleven long-form fundamental-subspace lessons in `parts/part_07_fundamental_subspaces_canonical.py`. See [`parts/PART_VII_FUNDAMENTAL_SUBSPACES.md`](parts/PART_VII_FUNDAMENTAL_SUBSPACES.md).
 
-- `Part7_01_RankIntuition`
-- `Part7_02_ColumnSpace`
-- `Part7_03_RowSpace`
-- `Part7_04_NullSpace`
-- `Part7_05_LeftNullSpace`
-- `Part7_06_FourFundamentalSubspaces`
-- `Part7_07_RankPivotsAndIndependentDirections`
-- `Part7_08_RankNullity`
-- `Part7_09_OrthogonalityPairs`
-- `Part7_10_DimensionsAndStructure`
-- `Part7_11_FundamentalSubspacesMastery`
+## Part VIII status
 
-See [`parts/PART_VII_FUNDAMENTAL_SUBSPACES.md`](parts/PART_VII_FUNDAMENTAL_SUBSPACES.md). The earlier `part_07_fundamental_subspaces.py` file is an initial draft and is not used by the authoritative renderer.
+Part VIII contains eleven long-form eigenvalue lessons in `parts/part_08_eigenvalues_canonical.py`:
+
+- `Part8_01_EigenvectorIntuition`
+- `Part8_02_EigenEquation`
+- `Part8_03_CharacteristicPolynomial`
+- `Part8_04_FindingEigenvectors`
+- `Part8_05_GeometricEigenspaces`
+- `Part8_06_AlgebraicVsGeometricMultiplicity`
+- `Part8_07_Diagonalization`
+- `Part8_08_MatrixPowers`
+- `Part8_09_DynamicsAndEigenDirections`
+- `Part8_10_EigenvaluesBeyond2D`
+- `Part8_11_EigenvalueMastery`
+
+See [`parts/PART_VIII_EIGENVALUES.md`](parts/PART_VIII_EIGENVALUES.md).
 
 ## Repository layout
 
@@ -102,6 +92,7 @@ manim/linear_algebra/
 ├── render_part5.py                        # authoritative Part V renderer
 ├── render_part6.py                        # authoritative Part VI renderer
 ├── render_part7.py                        # authoritative Part VII renderer
+├── render_part8.py                        # authoritative Part VIII renderer
 ├── verify_part1.py                        # Part I source checks
 ├── verify_part2.py                        # Part II source checks
 ├── verify_part3.py                        # Part III source checks
@@ -109,6 +100,7 @@ manim/linear_algebra/
 ├── verify_part5.py                        # Part V source checks
 ├── verify_part6.py                        # Part VI source checks
 ├── verify_part7.py                        # Part VII source checks
+├── verify_part8.py                        # Part VIII source checks
 ├── parts/
 │   ├── __init__.py
 │   ├── part_01_foundations_final.py
@@ -122,11 +114,11 @@ manim/linear_algebra/
 │   ├── part_05_geometry_final.py
 │   ├── PART_V_GEOMETRY.md
 │   ├── part_06_determinants_canonical.py
-│   ├── part_06_determinants_final.py  # compatibility shim
 │   ├── PART_VI_DETERMINANTS.md
 │   ├── part_07_fundamental_subspaces_canonical.py
-│   ├── part_07_fundamental_subspaces.py  # initial draft, not authoritative
-│   └── PART_VII_FUNDAMENTAL_SUBSPACES.md
+│   ├── PART_VII_FUNDAMENTAL_SUBSPACES.md
+│   ├── part_08_eigenvalues_canonical.py
+│   └── PART_VIII_EIGENVALUES.md
 ├── .github/workflows/manim-linear-algebra.yml
 ├── __init__.py
 ├── pyproject.toml
@@ -144,28 +136,16 @@ uv sync
 uv run manim checkhealth
 ```
 
-Render Part VI:
+Render Part VIII:
 
 ```bash
-uv run python render_part6.py
+uv run python render_part8.py
 ```
 
-Render Part VII:
+Verify Part VIII:
 
 ```bash
-uv run python render_part7.py
-```
-
-Verify Part VI:
-
-```bash
-uv run python verify_part6.py
-```
-
-Verify Part VII:
-
-```bash
-uv run python verify_part7.py
+uv run python verify_part8.py
 ```
 
 Generated media stays outside Git.
