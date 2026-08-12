@@ -14,7 +14,7 @@ The curriculum is organized into 13 parts:
 4. **Systems of Equations** — Ax=b, geometric constraints, augmented matrices, row operations, Gaussian elimination, back substitution, RREF, solution cases
 5. **Geometry** — dot products, norms, distance, angles, orthogonality, projections, orthogonal complements, Gram-Schmidt
 6. **Determinants** — signed area/volume, orientation, determinant properties, row operations, cofactor expansion, invertibility
-7. **Fundamental Subspaces** — rank, nullity, column/row/null/left-null spaces, rank-nullity
+7. **Fundamental Subspaces** — rank, pivots, column/row/null/left-null spaces, rank-nullity, orthogonality pairs
 8. **Eigenvalues** — eigenvectors, characteristic polynomial, multiplicities, diagonalization, powers
 9. **Symmetric Matrices** — spectral theorem, orthogonal eigenvectors, quadratic forms, definiteness
 10. **Decompositions** — LU, QR, change of basis, orthogonal matrices, linear operators
@@ -70,6 +70,24 @@ Part VI contains eleven long-form determinant lessons in `parts/part_06_determin
 
 See [`parts/PART_VI_DETERMINANTS.md`](parts/PART_VI_DETERMINANTS.md). The older `part_06_determinants_final.py` path is retained only as a compatibility shim.
 
+## Part VII status
+
+Part VII contains eleven long-form fundamental-subspace lessons in `parts/part_07_fundamental_subspaces_canonical.py`:
+
+- `Part7_01_RankIntuition`
+- `Part7_02_ColumnSpace`
+- `Part7_03_RowSpace`
+- `Part7_04_NullSpace`
+- `Part7_05_LeftNullSpace`
+- `Part7_06_FourFundamentalSubspaces`
+- `Part7_07_RankPivotsAndIndependentDirections`
+- `Part7_08_RankNullity`
+- `Part7_09_OrthogonalityPairs`
+- `Part7_10_DimensionsAndStructure`
+- `Part7_11_FundamentalSubspacesMastery`
+
+See [`parts/PART_VII_FUNDAMENTAL_SUBSPACES.md`](parts/PART_VII_FUNDAMENTAL_SUBSPACES.md). The earlier `part_07_fundamental_subspaces.py` file is an initial draft and is not used by the authoritative renderer.
+
 ## Repository layout
 
 ```text
@@ -83,12 +101,14 @@ manim/linear_algebra/
 ├── render_part4.py                        # authoritative Part IV renderer
 ├── render_part5.py                        # authoritative Part V renderer
 ├── render_part6.py                        # authoritative Part VI renderer
+├── render_part7.py                        # authoritative Part VII renderer
 ├── verify_part1.py                        # Part I source checks
 ├── verify_part2.py                        # Part II source checks
 ├── verify_part3.py                        # Part III source checks
 ├── verify_part4.py                        # Part IV source checks
 ├── verify_part5.py                        # Part V source checks
 ├── verify_part6.py                        # Part VI source checks
+├── verify_part7.py                        # Part VII source checks
 ├── parts/
 │   ├── __init__.py
 │   ├── part_01_foundations_final.py
@@ -103,7 +123,10 @@ manim/linear_algebra/
 │   ├── PART_V_GEOMETRY.md
 │   ├── part_06_determinants_canonical.py
 │   ├── part_06_determinants_final.py  # compatibility shim
-│   └── PART_VI_DETERMINANTS.md
+│   ├── PART_VI_DETERMINANTS.md
+│   ├── part_07_fundamental_subspaces_canonical.py
+│   ├── part_07_fundamental_subspaces.py  # initial draft, not authoritative
+│   └── PART_VII_FUNDAMENTAL_SUBSPACES.md
 ├── .github/workflows/manim-linear-algebra.yml
 ├── __init__.py
 ├── pyproject.toml
@@ -127,10 +150,22 @@ Render Part VI:
 uv run python render_part6.py
 ```
 
+Render Part VII:
+
+```bash
+uv run python render_part7.py
+```
+
 Verify Part VI:
 
 ```bash
 uv run python verify_part6.py
+```
+
+Verify Part VII:
+
+```bash
+uv run python verify_part7.py
 ```
 
 Generated media stays outside Git.
