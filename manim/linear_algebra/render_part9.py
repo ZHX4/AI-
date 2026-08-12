@@ -2,7 +2,7 @@ from pathlib import Path
 import subprocess
 
 ROOT = Path(__file__).resolve().parent
-SCRIPT = "parts/part_09_symmetric_matrices_canonical.py"
+SCRIPT = "parts/part_09_symmetric_matrices_final.py"
 SCENES = [
     "Part9_01_SymmetryIntuition",
     "Part9_02_OrthogonalEigenvectors",
