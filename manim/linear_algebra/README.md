@@ -2,7 +2,7 @@
 
 A long-form, first-principles linear algebra course for AI/ML students, built with Manim Community.
 
-This project is being developed as a **visual textbook**, not a formula checklist. Each major idea receives its own animation, geometric interpretation, derivation, worked examples, conceptual recap, and CC-style on-screen explanations.
+This project is a **visual textbook**, not a formula checklist. Each major idea receives its own animation, geometric interpretation, derivation, worked examples, conceptual recap, and CC-style on-screen explanations.
 
 ## Course architecture
 
@@ -49,7 +49,7 @@ See [`parts/PART_I_FOUNDATIONS.md`](parts/PART_I_FOUNDATIONS.md).
 
 ## Part II status
 
-Part II contains eleven long-form lessons:
+Part II contains eleven long-form lessons, all implemented in one canonical source file:
 
 - `Part2_01_Span`
 - `Part2_02_LinearDependence`
@@ -60,12 +60,10 @@ Part II contains eleven long-form lessons:
 - `Part2_07_Subspaces`
 - `Part2_08_ColumnSpace`
 - `Part2_09_RowSpaceAndNullSpace`
-- `Part2_10_RankNullityAndFourSpaces`
+- `Part2_10_RankNullity`
 - `Part2_11_FourFundamentalSubspaces`
 
 See [`parts/PART_II_VECTOR_SPACES.md`](parts/PART_II_VECTOR_SPACES.md).
-
-Part II deliberately gives the four-fundamental-subspaces explanation its own lesson so that column space, row space, null space, and null space of the transpose are actually explained, including their two orthogonal pairings.
 
 ## Repository layout
 
@@ -82,8 +80,7 @@ manim/linear_algebra/
 │   ├── __init__.py
 │   ├── part_01_foundations_final.py
 │   ├── PART_I_FOUNDATIONS.md
-│   ├── part_02_vector_spaces.py
-│   ├── part_02_four_fundamental_subspaces.py
+│   ├── part_02_vector_spaces.py           # canonical Part II source
 │   └── PART_II_VECTOR_SPACES.md
 ├── .github/workflows/manim-linear-algebra.yml
 ├── __init__.py
@@ -114,7 +111,7 @@ Render Part II:
 uv run python render_part2.py
 ```
 
-Verify Part II source structure:
+Verify Part II source structure and regression checkpoints:
 
 ```bash
 uv run python verify_part2.py
