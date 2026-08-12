@@ -1,0 +1,32 @@
+name: Manim Linear Algebra Checks
+
+on:
+  push:
+    paths:
+      - "manim/linear_algebra/**"
+      - ".github/workflows/manim-linear-algebra.yml"
+  pull_request:
+    paths:
+      - "manim/linear_algebra/**"
+      - ".github/workflows/manim-linear-algebra.yml"
+
+jobs:
+  source-checks:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: manim/linear_algebra
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile Part I and Part II sources
+        run: |
+          python -m py_compile parts/part_01_foundations_final.py
+          python -m py_compile parts/part_02_vector_spaces.py
+          python -m py_compile parts/part_02_four_fundamental_subspaces.py
+          python -m py_compile render_part1.py
+          python -m py_compile render_part2.py
+      - name: Verify Part II
+        run: python verify_part2.py
