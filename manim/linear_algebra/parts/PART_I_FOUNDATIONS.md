@@ -31,37 +31,34 @@ Every lesson uses **CC-style on-screen explanation text**. The CC is written as 
 - difference as a displacement between endpoints
 - componentwise subtraction
 - opposite vectors
-- subtraction as addition of an inverse
+- subtraction as addition of an opposite
 
 ### I.5 — Scaling and Unit Vectors
 - positive scalar multiplication
-- shrinking and stretching
+- stretching and shrinking
 - negative scalar multiplication and direction reversal
 - magnitude under scaling
 - normalization
-- unit vectors and why direction-only representations matter
+- unit vectors and direction-only representations
 
 ### I.6 — Magnitude and Distance
 - vector norm from the Pythagorean theorem
-- a complete 3-4-5 numerical example
-- distance between arbitrary points
+- complete 3-4-5 numerical example
+- distance between points
 - the difference vector as the bridge from points to vectors
 
 ### I.7 — Linear Combinations
 - scaling several vectors
 - tip-to-tail construction of a combination
 - componentwise calculation
-- a bounded worked example that stays inside the axes
+- bounded worked example that stays inside the axes
 - why linear combinations lead directly to span and basis
 
-### I.8 — Vector Algebra and Mastery
-- commutativity
-- associativity
-- additive identity and inverse
-- distributivity over vector addition
-- scalar distributivity
-- a complete worked combination: `2a - b`
-- final conceptual bridge to vector spaces
+### I.8 — Foundations Recap
+- one mental model connecting the first seven lessons
+- key formulas for components, norm, addition, scaling, and linear combinations
+- conceptual checkpoints
+- final bridge to span, independence, basis, dimension, and vector spaces
 
 ## Lesson design standard
 
@@ -75,14 +72,14 @@ Every lesson follows the same teaching rhythm:
 6. **Interpretation** — connect the calculation back to the geometry.
 7. **Transition** — explain why the current idea is needed for the next part.
 
-The course is inspired by the broader philosophy of visual mathematics: build intuition first, use animation to expose structure, and let equations explain the geometry rather than replace it. It does not copy another creator's scripts, narration, or exact presentation.
+The course follows the broader philosophy of visual mathematics: build intuition first, use animation to expose structure, and let equations explain the geometry rather than replace it. It does not copy another creator's scripts, narration, or exact presentation.
 
 ## Rendering
 
 From `manim/linear_algebra`:
 
 ```bash
-uv run manim -pqh parts/part_01_foundations.py Part1_01_ScalarsAndVectors
+uv run manim -pqh render_part1.py Part1_01_ScalarsAndVectors
 ```
 
 Render all eight lessons:
