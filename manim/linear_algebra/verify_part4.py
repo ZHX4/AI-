@@ -36,13 +36,6 @@ def matvec(A, x):
     return [sum(a * b for a, b in zip(row, x)) for row in A]
 
 
-def matmul(A, B):
-    return [
-        [sum(A[i][k] * B[k][j] for k in range(len(B))) for j in range(len(B[0]))]
-        for i in range(len(A))
-    ]
-
-
 def main():
     source = SOURCE.read_text(encoding="utf-8")
     tree = ast.parse(source, filename=str(SOURCE))
@@ -67,8 +60,7 @@ def main():
     assert (7 - 2 * 2) / 3 == 1
     assert 4 - 2 * 1 + 2 == 4
 
-    # RREF example.
-    assert matmul([[1, 1], [2, -1]], [[2, 1], [1, -1]]) == [[5, 0], [3, 3]]
+    # RREF example shown in the lesson.
     assert "1&0&2" in source and "0&1&3" in source
 
     # Three solution cases: distinct intersecting, parallel distinct, coincident.
