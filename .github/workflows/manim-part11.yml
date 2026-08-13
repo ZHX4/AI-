@@ -1,0 +1,31 @@
+name: Part XI SVD Checks
+
+on:
+  push:
+    paths:
+      - "manim/linear_algebra/parts/part_11_svd_final.py"
+      - "manim/linear_algebra/verify_part11.py"
+      - "manim/linear_algebra/render_part11.py"
+      - ".github/workflows/manim-part11.yml"
+  pull_request:
+    paths:
+      - "manim/linear_algebra/parts/part_11_svd_final.py"
+      - "manim/linear_algebra/verify_part11.py"
+      - "manim/linear_algebra/render_part11.py"
+      - ".github/workflows/manim-part11.yml"
+
+jobs:
+  source-check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: manim/linear_algebra
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile Part XI
+        run: python -m py_compile parts/part_11_svd_final.py render_part11.py verify_part11.py
+      - name: Verify Part XI
+        run: python verify_part11.py
