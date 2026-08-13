@@ -19,7 +19,7 @@ The curriculum is organized into 13 parts:
 9. **Symmetric Matrices** — spectral theorem, orthogonal eigenvectors, quadratic forms, principal axes, Rayleigh quotient, definiteness
 10. **Decompositions** — change of basis, similarity, orthogonal matrices, LU, QR, linear operators
 11. **SVD** — singular vectors, singular values, geometry, pseudoinverse, low-rank approximation
-12. **PCA** — centering, covariance, variance, principal directions, projection, reconstruction
+12. **PCA** — centering, covariance, variance, principal directions, projection, reconstruction, explained variance, SVD connection
 13. **Numerical + ML Connections** — conditioning, stability, least squares, regression, neural networks, embeddings
 
 ## Teaching standard
@@ -32,27 +32,27 @@ CC-style text is part of the lesson itself. Captions explain what the viewer is 
 
 The visual language uses coordinate axes, labeled vectors, moving points, subspaces, transformed grids, highlighted equations, pauses for reasoning, and deliberate transitions. The teaching philosophy is inspired by high-quality visual mathematics without copying another creator's scripts, narration, or exact presentation.
 
-## Part I–X status
+## Part I–XI status
 
-Parts I–X are implemented as the authoritative long-form curriculum. Each has its own renderer, verifier, curriculum document, and CI coverage.
+Parts I–XI are implemented as the authoritative long-form curriculum. Each has its own renderer, verifier, curriculum document, and CI coverage.
 
-## Part XI status
+## Part XII status
 
-Part XI contains eleven long-form SVD lessons in `parts/part_11_svd_final.py`:
+Part XII contains eleven long-form PCA lessons in `parts/part_12_pca_final.py`:
 
-- `Part11_01_SVDIntuition`
-- `Part11_02_SingularValuesFromATA`
-- `Part11_03_RightSingularVectors`
-- `Part11_04_LeftSingularVectors`
-- `Part11_05_AssemblingSVD`
-- `Part11_06_SphereToEllipse`
-- `Part11_07_SingularValuesAndStretching`
-- `Part11_08_RankAndZeroSingularValues`
-- `Part11_09_Pseudoinverse`
-- `Part11_10_LowRankApproximation`
-- `Part11_11_SVDMastery`
+- `Part12_01_PCAIntuition`
+- `Part12_02_CenteringData`
+- `Part12_03_CovarianceMatrix`
+- `Part12_04_PrincipalDirections`
+- `Part12_05_MaximumVariance`
+- `Part12_06_ProjectionOntoPCs`
+- `Part12_07_Reconstruction`
+- `Part12_08_ExplainedVariance`
+- `Part12_09_PCAFromSVD`
+- `Part12_10_HigherDimensionalPCA`
+- `Part12_11_PCAMastery`
 
-See [`parts/PART_XI_SVD.md`](parts/PART_XI_SVD.md).
+See [`parts/PART_XII_PCA.md`](parts/PART_XII_PCA.md).
 
 ## Repository layout
 
@@ -61,8 +61,8 @@ manim/linear_algebra/
 ├── course.py
 ├── utils.py
 ├── render_all.py
-├── render_part1.py ... render_part11.py
-├── verify_part1.py ... verify_part11.py
+├── render_part1.py ... render_part12.py
+├── verify_part1.py ... verify_part12.py
 ├── parts/
 │   ├── part_01_foundations_final.py
 │   ├── part_02_vector_spaces.py
@@ -75,6 +75,7 @@ manim/linear_algebra/
 │   ├── part_09_symmetric_matrices_final.py
 │   ├── part_10_decompositions_final.py
 │   ├── part_11_svd_final.py
+│   ├── part_12_pca_final.py
 │   ├── PART_I_FOUNDATIONS.md
 │   ├── PART_II_VECTOR_SPACES.md
 │   ├── PART_III_MATRICES.md
@@ -85,7 +86,8 @@ manim/linear_algebra/
 │   ├── PART_VIII_EIGENVALUES.md
 │   ├── PART_IX_SYMMETRIC_MATRICES.md
 │   ├── PART_X_DECOMPOSITIONS.md
-│   └── PART_XI_SVD.md
+│   ├── PART_XI_SVD.md
+│   └── PART_XII_PCA.md
 ├── .github/workflows/manim-linear-algebra.yml
 ├── __init__.py
 ├── pyproject.toml
@@ -103,16 +105,16 @@ uv sync
 uv run manim checkhealth
 ```
 
-Render Part XI:
+Render Part XII:
 
 ```bash
-uv run python render_part11.py
+uv run python render_part12.py
 ```
 
-Verify Part XI:
+Verify Part XII:
 
 ```bash
-uv run python verify_part11.py
+uv run python verify_part12.py
 ```
 
 Generated media stays outside Git.
