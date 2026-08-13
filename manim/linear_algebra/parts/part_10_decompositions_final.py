@@ -32,8 +32,9 @@ class Part10_01_ChangeOfBasisIntuition(DecompositionLesson):
         self.play(Write(self.eq(r"v=3e_1+e_2", 0.90, 0.95)))
         self.play(Write(self.eq(r"[v]_E=\begin{bmatrix}3\\1\end{bmatrix}", 0.80, 0.18)))
         self.play(Write(self.eq(r"B=\begin{bmatrix}1&1\\1&-1\end{bmatrix}", 0.70, -0.60)))
-        self.play(Write(self.eq(r"v=B[v]_B", 0.88, -1.42)))
-        self.cc("The columns of B are the new basis vectors. B converts coordinates in that basis into standard coordinates.", 3.0)
+        self.play(Write(self.eq(r"[v]_B=\begin{bmatrix}2\\1\end{bmatrix}", 0.80, -1.18)))
+        self.play(Write(self.eq(r"v=B[v]_B", 0.88, -1.82)))
+        self.cc("The columns of B are the new basis vectors. Here 2(1,1)+1(1,-1)=(3,1), so the same vector has B-coordinates (2,1).", 3.0)
         self.wait(2)
 
 
@@ -56,9 +57,9 @@ class Part10_03_SimilarityTransformations(DecompositionLesson):
         self.play(Write(self.eq(r"[T]_E=A", 0.90, 1.30)))
         self.play(Write(self.eq(r"[T]_B=B^{-1}AB", 0.96, 0.48)))
         self.cc("A linear operator is the underlying rule. Its matrix depends on the basis used to represent that rule.", 3.0)
-        self.play(Write(self.eq(r"\text{B}^{-1}\;\to\;\text{change into the new coordinates}", 0.60, -0.28)))
-        self.play(Write(self.eq(r"A\;\to\;\text{apply the operator}", 0.66, -0.88)))
-        self.play(Write(self.eq(r"B\;\to\;\text{return to the new coordinate description}", 0.58, -1.48)))
+        self.play(Write(self.eq(r"\text{B}:\ \text{B-coordinates}\to\text{standard coordinates}", 0.58, -0.28)))
+        self.play(Write(self.eq(r"\text{A}:\ \text{apply the operator in standard coordinates}", 0.60, -0.88)))
+        self.play(Write(self.eq(r"\text{B}^{-1}:\ \text{standard coordinates}\to\text{B-coordinates}", 0.56, -1.48)))
         self.play(Write(self.eq(r"\boxed{[T]_B=B^{-1}AB}", 0.82, -2.20)))
         self.wait(2)
 
