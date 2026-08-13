@@ -32,27 +32,27 @@ CC-style text is part of the lesson itself. Captions explain what the viewer is 
 
 The visual language uses coordinate axes, labeled vectors, moving points, subspaces, transformed grids, highlighted equations, pauses for reasoning, and deliberate transitions. The teaching philosophy is inspired by high-quality visual mathematics without copying another creator's scripts, narration, or exact presentation.
 
-## Part I–IX status
+## Part I–X status
 
-Parts I–IX are implemented as the authoritative long-form curriculum. Each has its own renderer, verifier, curriculum document, and CI coverage.
+Parts I–X are implemented as the authoritative long-form curriculum. Each has its own renderer, verifier, curriculum document, and CI coverage.
 
-## Part X status
+## Part XI status
 
-Part X contains eleven long-form decomposition lessons in `parts/part_10_decompositions_final.py`:
+Part XI contains eleven long-form SVD lessons in `parts/part_11_svd_final.py`:
 
-- `Part10_01_ChangeOfBasisIntuition`
-- `Part10_02_CoordinateTransformation`
-- `Part10_03_SimilarityTransformations`
-- `Part10_04_OrthogonalMatrices`
-- `Part10_05_LU_Factorization`
-- `Part10_06_LU_SolvingSystems`
-- `Part10_07_QR_Factorization`
-- `Part10_08_QR_Geometry`
-- `Part10_09_LinearOperators`
-- `Part10_10_DecompositionComparison`
-- `Part10_11_DecompositionsMastery`
+- `Part11_01_SVDIntuition`
+- `Part11_02_SingularValuesFromATA`
+- `Part11_03_RightSingularVectors`
+- `Part11_04_LeftSingularVectors`
+- `Part11_05_AssemblingSVD`
+- `Part11_06_SphereToEllipse`
+- `Part11_07_SingularValuesAndStretching`
+- `Part11_08_RankAndZeroSingularValues`
+- `Part11_09_Pseudoinverse`
+- `Part11_10_LowRankApproximation`
+- `Part11_11_SVDMastery`
 
-See [`parts/PART_X_DECOMPOSITIONS.md`](parts/PART_X_DECOMPOSITIONS.md).
+See [`parts/PART_XI_SVD.md`](parts/PART_XI_SVD.md).
 
 ## Repository layout
 
@@ -61,8 +61,8 @@ manim/linear_algebra/
 ├── course.py
 ├── utils.py
 ├── render_all.py
-├── render_part1.py ... render_part10.py
-├── verify_part1.py ... verify_part10.py
+├── render_part1.py ... render_part11.py
+├── verify_part1.py ... verify_part11.py
 ├── parts/
 │   ├── part_01_foundations_final.py
 │   ├── part_02_vector_spaces.py
@@ -74,6 +74,7 @@ manim/linear_algebra/
 │   ├── part_08_eigenvalues_canonical.py
 │   ├── part_09_symmetric_matrices_final.py
 │   ├── part_10_decompositions_final.py
+│   ├── part_11_svd_final.py
 │   ├── PART_I_FOUNDATIONS.md
 │   ├── PART_II_VECTOR_SPACES.md
 │   ├── PART_III_MATRICES.md
@@ -83,7 +84,8 @@ manim/linear_algebra/
 │   ├── PART_VII_FUNDAMENTAL_SUBSPACES.md
 │   ├── PART_VIII_EIGENVALUES.md
 │   ├── PART_IX_SYMMETRIC_MATRICES.md
-│   └── PART_X_DECOMPOSITIONS.md
+│   ├── PART_X_DECOMPOSITIONS.md
+│   └── PART_XI_SVD.md
 ├── .github/workflows/manim-linear-algebra.yml
 ├── __init__.py
 ├── pyproject.toml
@@ -101,16 +103,16 @@ uv sync
 uv run manim checkhealth
 ```
 
-Render Part X:
+Render Part XI:
 
 ```bash
-uv run python render_part10.py
+uv run python render_part11.py
 ```
 
-Verify Part X:
+Verify Part XI:
 
 ```bash
-uv run python verify_part10.py
+uv run python verify_part11.py
 ```
 
 Generated media stays outside Git.
