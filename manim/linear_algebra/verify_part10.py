@@ -35,10 +35,21 @@ def main():
     Binv = [[0.5, 0.5], [0.5, -0.5]]
     I = mm(Binv, B)
     assert I == [[1.0, 0.0], [0.0, 1.0]]
+    v = [3, 1]
+    c = [2, 1]
+    assert [B[0][0] * c[0] + B[0][1] * c[1], B[1][0] * c[0] + B[1][1] * c[1]] == v
+    assert [Binv[0][0] * v[0] + Binv[0][1] * v[1], Binv[1][0] * v[0] + Binv[1][1] * v[1]] == c
+    assert r"[v]_B=\begin{bmatrix}2\\1\end{bmatrix}" in source
+
+    # Similarity-transform ordering: B maps B-coordinates to standard coordinates,
+    # A applies the operator there, and B^{-1} returns to B-coordinates.
+    assert r"[T]_B=B^{-1}AB" in source
+    assert "B-coordinates\\to\\text{standard coordinates" in source
+    assert "standard coordinates\\to\\text{B-coordinates" in source
 
     # Orthogonal rotation check.
-    c = s = math.sqrt(0.5)
-    Q = [[c, -s], [s, c]]
+    c0 = s0 = math.sqrt(0.5)
+    Q = [[c0, -s0], [s0, c0]]
     QtQ = mm([[Q[j][i] for j in range(2)] for i in range(2)], Q)
     assert all(abs(QtQ[i][j] - (1 if i == j else 0)) < 1e-12 for i in range(2) for j in range(2))
 
@@ -84,7 +95,7 @@ def main():
     for scene in SCENES:
         assert scene in renderer
 
-    print(f"PASS Part X: {len(SCENES)} scenes, basis-change arithmetic, orthogonal matrix identity, LU factorization/solve, QR factorization, operator formulas, and canonical renderer verified")
+    print(f"PASS Part X: {len(SCENES)} scenes, coordinate-change example, similarity ordering, orthogonal matrix identity, LU factorization/solve, QR factorization, operator formulas, and canonical renderer verified")
 
 
 if __name__ == "__main__":
