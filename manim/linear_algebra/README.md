@@ -17,7 +17,7 @@ The curriculum is organized into 13 parts:
 7. **Fundamental Subspaces** — rank, pivots, column/row/null/left-null spaces, rank-nullity, orthogonality pairs
 8. **Eigenvalues** — eigenvectors, characteristic polynomial, eigenspaces, multiplicities, diagonalization, powers, dynamical behavior
 9. **Symmetric Matrices** — spectral theorem, orthogonal eigenvectors, quadratic forms, principal axes, Rayleigh quotient, definiteness
-10. **Decompositions** — LU, QR, change of basis, orthogonal matrices, linear operators
+10. **Decompositions** — change of basis, similarity, orthogonal matrices, LU, QR, linear operators
 11. **SVD** — singular vectors, singular values, geometry, pseudoinverse, low-rank approximation
 12. **PCA** — centering, covariance, variance, principal directions, projection, reconstruction
 13. **Numerical + ML Connections** — conditioning, stability, least squares, regression, neural networks, embeddings
@@ -32,27 +32,27 @@ CC-style text is part of the lesson itself. Captions explain what the viewer is 
 
 The visual language uses coordinate axes, labeled vectors, moving points, subspaces, transformed grids, highlighted equations, pauses for reasoning, and deliberate transitions. The teaching philosophy is inspired by high-quality visual mathematics without copying another creator's scripts, narration, or exact presentation.
 
-## Part I–VIII status
+## Part I–IX status
 
-Parts I–VIII are implemented as the authoritative long-form curriculum. Each has its own renderer, verifier, curriculum document, and CI coverage.
+Parts I–IX are implemented as the authoritative long-form curriculum. Each has its own renderer, verifier, curriculum document, and CI coverage.
 
-## Part IX status
+## Part X status
 
-Part IX contains eleven long-form symmetric-matrix lessons in `parts/part_09_symmetric_matrices_final.py`:
+Part X contains eleven long-form decomposition lessons in `parts/part_10_decompositions_final.py`:
 
-- `Part9_01_SymmetryIntuition`
-- `Part9_02_OrthogonalEigenvectors`
-- `Part9_03_SpectralTheorem`
-- `Part9_04_BuildingQAndLambda`
-- `Part9_05_QuadraticForms`
-- `Part9_06_PrincipalAxes`
-- `Part9_07_RayleighQuotient`
-- `Part9_08_PositiveDefinite`
-- `Part9_09_NegativeAndIndefinite`
-- `Part9_10_SemidefiniteAndTests`
-- `Part9_11_SymmetricMatrixMastery`
+- `Part10_01_ChangeOfBasisIntuition`
+- `Part10_02_CoordinateTransformation`
+- `Part10_03_SimilarityTransformations`
+- `Part10_04_OrthogonalMatrices`
+- `Part10_05_LU_Factorization`
+- `Part10_06_LU_SolvingSystems`
+- `Part10_07_QR_Factorization`
+- `Part10_08_QR_Geometry`
+- `Part10_09_LinearOperators`
+- `Part10_10_DecompositionComparison`
+- `Part10_11_DecompositionsMastery`
 
-See [`parts/PART_IX_SYMMETRIC_MATRICES.md`](parts/PART_IX_SYMMETRIC_MATRICES.md).
+See [`parts/PART_X_DECOMPOSITIONS.md`](parts/PART_X_DECOMPOSITIONS.md).
 
 ## Repository layout
 
@@ -61,8 +61,8 @@ manim/linear_algebra/
 ├── course.py
 ├── utils.py
 ├── render_all.py
-├── render_part1.py ... render_part9.py
-├── verify_part1.py ... verify_part9.py
+├── render_part1.py ... render_part10.py
+├── verify_part1.py ... verify_part10.py
 ├── parts/
 │   ├── part_01_foundations_final.py
 │   ├── part_02_vector_spaces.py
@@ -73,6 +73,7 @@ manim/linear_algebra/
 │   ├── part_07_fundamental_subspaces_canonical.py
 │   ├── part_08_eigenvalues_canonical.py
 │   ├── part_09_symmetric_matrices_final.py
+│   ├── part_10_decompositions_final.py
 │   ├── PART_I_FOUNDATIONS.md
 │   ├── PART_II_VECTOR_SPACES.md
 │   ├── PART_III_MATRICES.md
@@ -81,7 +82,8 @@ manim/linear_algebra/
 │   ├── PART_VI_DETERMINANTS.md
 │   ├── PART_VII_FUNDAMENTAL_SUBSPACES.md
 │   ├── PART_VIII_EIGENVALUES.md
-│   └── PART_IX_SYMMETRIC_MATRICES.md
+│   ├── PART_IX_SYMMETRIC_MATRICES.md
+│   └── PART_X_DECOMPOSITIONS.md
 ├── .github/workflows/manim-linear-algebra.yml
 ├── __init__.py
 ├── pyproject.toml
@@ -99,16 +101,16 @@ uv sync
 uv run manim checkhealth
 ```
 
-Render Part IX:
+Render Part X:
 
 ```bash
-uv run python render_part9.py
+uv run python render_part10.py
 ```
 
-Verify Part IX:
+Verify Part X:
 
 ```bash
-uv run python verify_part9.py
+uv run python verify_part10.py
 ```
 
 Generated media stays outside Git.
