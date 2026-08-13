@@ -1,3 +1,4 @@
+import numpy as np
 from manim import *
 
 from .part_11_svd_final import *
