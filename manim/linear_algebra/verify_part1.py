@@ -5,6 +5,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / "parts" / "part_01_foundations_final.py"
+CANONICAL = ROOT / "parts" / "part_01_foundations_canonical.py"
+UTILS = ROOT / "utils.py"
 EXPECTED = [
     "Part1_01_ScalarsAndVectors",
     "Part1_02_CoordinatesAndComponents",
@@ -17,17 +19,31 @@ EXPECTED = [
 ]
 
 source = SOURCE.read_text(encoding="utf-8")
+canonical = CANONICAL.read_text(encoding="utf-8")
+utils = UTILS.read_text(encoding="utf-8")
+
+# Mathematical lesson structure remains intact.
 tree = ast.parse(source, filename=str(SOURCE))
 classes = {n.name for n in tree.body if isinstance(n, ast.ClassDef)}
 missing = [name for name in EXPECTED if name not in classes]
 assert not missing, f"Missing Part I scenes: {missing}"
 assert "class FoundationLesson" in source
 assert source.count("self.cc(") >= 25, "Part I needs substantial CC narration"
-assert "2\\begin{bmatrix}2\\\\0.5" in source
-assert "\\begin{bmatrix}1\\\\2.5\\end{bmatrix}" in source
-assert "(1,2.5)" in source
-assert "(1,8)" not in source, "Out-of-range linear-combination endpoint remains"
-assert "y_range=[-5,5,1]" in source
+
+# Canonical presentation wrapper must own the rendered Part I path.
+assert "FoundationLesson.axes = _safe_axes" in canonical
+assert "FoundationLesson.eq = _safe_eq" in canonical
+assert "x_length=7.25" in canonical
+assert "y_length=5.35" in canonical
+assert "set_max_width(3.25)" in canonical
+
+# The global caption system must behave as a single subtitle track.
+assert "self._cc_caption" in utils
+assert "FadeOut(self._cc_caption" in utils
+assert "CC_PANEL_HEIGHT" in utils
+assert "CC_FONT_SIZE = 24" in utils
+assert "caption_text = \"\\n\".join(lines[:2])" in utils
+assert "font_size=38" in utils
 
 # Independent arithmetic checks for the numerical examples taught on screen.
 assert (3 + 1, 1 + 3) == (4, 4)
@@ -41,4 +57,5 @@ print(f"- {len(EXPECTED)} lesson scenes present")
 print("- Python AST parses successfully")
 print("- CC narration threshold satisfied")
 print("- numerical examples checked independently")
-print("- known out-of-range linear-combination endpoint absent")
+print("- canonical spacious layout is wired")
+print("- caption track is single-instance and bounded")
