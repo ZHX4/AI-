@@ -4,7 +4,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT.parent))
-from linear_algebra.parts.part_01_foundations_final import *  # noqa: F401,F403
+from linear_algebra.parts.part_01_foundations_canonical import *  # noqa: F401,F403
 
 SCENES = [
     "Part1_01_ScalarsAndVectors",
@@ -21,7 +21,7 @@ if __name__ == "__main__":
     for scene in SCENES:
         print(f"=== Rendering {scene} ===")
         result = subprocess.run(
-            ["uv", "run", "manim", "-qh", "parts/part_01_foundations_final.py", scene],
+            ["uv", "run", "manim", "-qh", "parts/part_01_foundations_canonical.py", scene],
             cwd=ROOT,
             check=False,
         )
