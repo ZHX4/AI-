@@ -36,6 +36,7 @@ jobs:
           python -m py_compile parts/part_11_svd_final.py
           python -m py_compile parts/part_12_pca_final.py
           python -m py_compile parts/part_13_numerical_ml_final.py
+          python -m py_compile parts/part_13_numerical_ml_canonical.py
           python -m py_compile render_part1.py
           python -m py_compile render_part2.py
           python -m py_compile render_part3.py
@@ -49,6 +50,7 @@ jobs:
           python -m py_compile render_part11.py
           python -m py_compile render_part12.py
           python -m py_compile render_part13.py
+          python -m py_compile render_part13_canonical.py
           python -m py_compile verify_part2.py
           python -m py_compile verify_part3.py
           python -m py_compile verify_part4.py
@@ -61,6 +63,7 @@ jobs:
           python -m py_compile verify_part11.py
           python -m py_compile verify_part12.py
           python -m py_compile verify_part13.py
+          python -m py_compile verify_part13_canonical.py
       - name: Verify Part II
         run: python verify_part2.py
       - name: Verify Part III
@@ -85,3 +88,5 @@ jobs:
         run: python verify_part12.py
       - name: Verify Part XIII
         run: python verify_part13.py
+      - name: Verify Part XIII canonical path
+        run: python verify_part13_canonical.py
