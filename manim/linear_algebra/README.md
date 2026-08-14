@@ -38,7 +38,7 @@ Parts I–XII are implemented as the authoritative long-form curriculum. Each ha
 
 ## Part XIII status
 
-Part XIII contains eleven long-form numerical/ML lessons in `parts/part_13_numerical_ml_final.py`:
+Part XIII contains eleven long-form numerical/ML lessons. The authoritative renderer uses `parts/part_13_numerical_ml_canonical.py`; the base module `parts/part_13_numerical_ml_final.py` provides the shared lessons, while the canonical module corrects the least-squares projection scene.
 
 - `Part13_01_NumericalLinearAlgebra`
 - `Part13_02_Conditioning`
@@ -62,7 +62,9 @@ manim/linear_algebra/
 ├── utils.py
 ├── render_all.py
 ├── render_part1.py ... render_part13.py
+├── render_part13_canonical.py
 ├── verify_part1.py ... verify_part13.py
+├── verify_part13_canonical.py
 ├── parts/
 │   ├── part_01_foundations_final.py
 │   ├── part_02_vector_spaces.py
@@ -77,6 +79,7 @@ manim/linear_algebra/
 │   ├── part_11_svd_final.py
 │   ├── part_12_pca_final.py
 │   ├── part_13_numerical_ml_final.py
+│   ├── part_13_numerical_ml_canonical.py
 │   ├── PART_I_FOUNDATIONS.md
 │   ├── PART_II_VECTOR_SPACES.md
 │   ├── PART_III_MATRICES.md
