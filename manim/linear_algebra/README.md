@@ -20,7 +20,7 @@ The curriculum is organized into 13 parts:
 10. **Decompositions** — change of basis, similarity, orthogonal matrices, LU, QR, linear operators
 11. **SVD** — singular vectors, singular values, geometry, pseudoinverse, low-rank approximation
 12. **PCA** — centering, covariance, variance, principal directions, projection, reconstruction, explained variance, SVD connection
-13. **Numerical + ML Connections** — conditioning, stability, least squares, regression, neural networks, embeddings
+13. **Numerical + ML Connections** — conditioning, floating-point error, stability, least squares, regression, gradient descent, neural networks, embeddings
 
 ## Teaching standard
 
@@ -32,27 +32,27 @@ CC-style text is part of the lesson itself. Captions explain what the viewer is 
 
 The visual language uses coordinate axes, labeled vectors, moving points, subspaces, transformed grids, highlighted equations, pauses for reasoning, and deliberate transitions. The teaching philosophy is inspired by high-quality visual mathematics without copying another creator's scripts, narration, or exact presentation.
 
-## Part I–XI status
+## Part I–XII status
 
-Parts I–XI are implemented as the authoritative long-form curriculum. Each has its own renderer, verifier, curriculum document, and CI coverage.
+Parts I–XII are implemented as the authoritative long-form curriculum. Each has its own renderer, verifier, curriculum document, and CI coverage.
 
-## Part XII status
+## Part XIII status
 
-Part XII contains eleven long-form PCA lessons in `parts/part_12_pca_final.py`:
+Part XIII contains eleven long-form numerical/ML lessons in `parts/part_13_numerical_ml_final.py`:
 
-- `Part12_01_PCAIntuition`
-- `Part12_02_CenteringData`
-- `Part12_03_CovarianceMatrix`
-- `Part12_04_PrincipalDirections`
-- `Part12_05_MaximumVariance`
-- `Part12_06_ProjectionOntoPCs`
-- `Part12_07_Reconstruction`
-- `Part12_08_ExplainedVariance`
-- `Part12_09_PCAFromSVD`
-- `Part12_10_HigherDimensionalPCA`
-- `Part12_11_PCAMastery`
+- `Part13_01_NumericalLinearAlgebra`
+- `Part13_02_Conditioning`
+- `Part13_03_FloatingPointAndCancellation`
+- `Part13_04_StableAlgorithms`
+- `Part13_05_LeastSquares`
+- `Part13_06_NormalEquationsVsQR`
+- `Part13_07_LinearRegression`
+- `Part13_08_GradientDescent`
+- `Part13_09_NeuralNetworkLinearAlgebra`
+- `Part13_10_EmbeddingsAndSimilarity`
+- `Part13_11_NumericalMLMastery`
 
-See [`parts/PART_XII_PCA.md`](parts/PART_XII_PCA.md).
+See [`parts/PART_XIII_NUMERICAL_ML.md`](parts/PART_XIII_NUMERICAL_ML.md).
 
 ## Repository layout
 
@@ -61,8 +61,8 @@ manim/linear_algebra/
 ├── course.py
 ├── utils.py
 ├── render_all.py
-├── render_part1.py ... render_part12.py
-├── verify_part1.py ... verify_part12.py
+├── render_part1.py ... render_part13.py
+├── verify_part1.py ... verify_part13.py
 ├── parts/
 │   ├── part_01_foundations_final.py
 │   ├── part_02_vector_spaces.py
@@ -76,6 +76,7 @@ manim/linear_algebra/
 │   ├── part_10_decompositions_final.py
 │   ├── part_11_svd_final.py
 │   ├── part_12_pca_final.py
+│   ├── part_13_numerical_ml_final.py
 │   ├── PART_I_FOUNDATIONS.md
 │   ├── PART_II_VECTOR_SPACES.md
 │   ├── PART_III_MATRICES.md
@@ -87,7 +88,8 @@ manim/linear_algebra/
 │   ├── PART_IX_SYMMETRIC_MATRICES.md
 │   ├── PART_X_DECOMPOSITIONS.md
 │   ├── PART_XI_SVD.md
-│   └── PART_XII_PCA.md
+│   ├── PART_XII_PCA.md
+│   └── PART_XIII_NUMERICAL_ML.md
 ├── .github/workflows/manim-linear-algebra.yml
 ├── __init__.py
 ├── pyproject.toml
@@ -105,16 +107,16 @@ uv sync
 uv run manim checkhealth
 ```
 
-Render Part XII:
+Render Part XIII:
 
 ```bash
-uv run python render_part12.py
+uv run python render_part13.py
 ```
 
-Verify Part XII:
+Verify Part XIII:
 
 ```bash
-uv run python verify_part12.py
+uv run python verify_part13.py
 ```
 
 Generated media stays outside Git.
