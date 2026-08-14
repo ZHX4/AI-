@@ -5,7 +5,7 @@ import math
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent
-SOURCE = ROOT / "parts/part_13_numerical_ml_final.py"
+SOURCE = ROOT / "parts/part_13_numerical_ml_canonical.py"
 SCENES = [
     "Part13_01_NumericalLinearAlgebra",
     "Part13_02_Conditioning",
@@ -25,9 +25,15 @@ def main():
     source = SOURCE.read_text(encoding="utf-8")
     tree = ast.parse(source, filename=str(SOURCE))
     classes = {node.name for node in tree.body if isinstance(node, ast.ClassDef)}
-    missing = set(SCENES) - classes
-    assert not missing, f"Missing Part XIII scenes: {sorted(missing)}"
-    assert source.count("self.cc(") >= len(SCENES)
+    assert "Part13_05_LeastSquares" in classes
+
+    # The canonical source imports the other ten lessons from the base file.
+    base_source = (ROOT / "parts/part_13_numerical_ml_final.py").read_text(encoding="utf-8")
+    for name in SCENES:
+        if name != "Part13_05_LeastSquares":
+            assert name in base_source, name
+    assert source.count("self.cc(") >= 1
+    assert "68 / 25" in source and "76 / 25" in source
 
     eps = 1e-3
     Acond = np.diag([1.0, eps])
@@ -72,20 +78,21 @@ def main():
         r"z=Wx+b",
         r"\cos\theta=\frac{x^Ty}{\|x\|\|y\|}",
     ]
+    base_required = base_source
     for item in required:
-        assert item in source, item
+        assert item in base_required, item
 
-    renderer_path = ROOT / "render_part13.py"
-    assert renderer_path.exists(), "Part XIII renderer is missing"
+    renderer_path = ROOT / "render_part13_canonical.py"
+    assert renderer_path.exists(), "Canonical Part XIII renderer is missing"
     renderer = renderer_path.read_text(encoding="utf-8")
-    assert 'SCRIPT = "parts/part_13_numerical_ml_final.py"' in renderer
+    assert 'SCRIPT = "parts/part_13_numerical_ml_canonical.py"' in renderer
     for scene in SCENES:
         assert scene in renderer
 
     curriculum = ROOT / "parts/PART_XIII_NUMERICAL_ML.md"
     assert curriculum.exists(), "Part XIII curriculum document is missing"
 
-    print(f"PASS Part XIII: {len(SCENES)} scenes, conditioning, least squares, QR stability, regression, gradient descent, neural-network linear algebra, embeddings, and mandatory renderer wiring verified")
+    print(f"PASS Part XIII: {len(SCENES)} canonical scenes, exact numerical checks, corrected least-squares projection, and canonical renderer wiring verified")
 
 
 if __name__ == "__main__":
