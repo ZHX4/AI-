@@ -1,3 +1,5 @@
+from textwrap import wrap
+
 from manim import *
 
 BG = "#0b1020"
@@ -12,32 +14,70 @@ HIGHLIGHT = RED_C
 class LessonScene(Scene):
     """Base scene for long-form, captioned mathematics lessons."""
 
+    CC_WIDTH = 11.2
+    CC_FONT_SIZE = 24
+    CC_PANEL_HEIGHT = 1.02
+    CC_BOTTOM = 0.16
+
     def setup(self):
         self.camera.background_color = BG
+        self._cc_caption = None
 
     def title(self, text, subtitle=None):
-        t = Text(text, font_size=42, weight=BOLD).to_edge(UP)
+        """Render a compact header in a reserved top band."""
+        t = Text(text, font_size=38, weight=BOLD).to_edge(UP, buff=0.20)
         self.play(Write(t))
+        group = [t]
         if subtitle:
-            s = Text(subtitle, font_size=23, color=GREY_B).next_to(t, DOWN, buff=0.16)
+            s = Text(subtitle, font_size=20, color=GREY_B).next_to(t, DOWN, buff=0.10)
             self.play(FadeIn(s))
-        self.wait(1)
-        return VGroup(t, *([s] if subtitle else []))
+            group.append(s)
+        self.wait(0.7)
+        return VGroup(*group)
 
-    def cc(self, text, seconds=3.0, width=11.5, size=27):
-        """Show a subtitle/closed-caption line, then return it for later cleanup."""
+    def cc(self, text, seconds=3.0, width=None, size=None):
+        """Show one subtitle at a time in a dedicated bottom caption track."""
+        width = width or self.CC_WIDTH
+        size = size or self.CC_FONT_SIZE
+
+        lines = wrap(str(text), width=88)
+        caption_text = "\n".join(lines[:2])
         caption = Text(
-            text,
+            caption_text,
             font_size=size,
             color=GREY_A,
-            line_spacing=0.9,
-            margin=0.08,
+            line_spacing=0.82,
+            margin=0.04,
+            should_center=True,
         )
         caption.set_max_width(width)
-        caption.to_edge(DOWN, buff=0.28)
-        self.play(FadeIn(caption, shift=UP * 0.12), run_time=0.35)
+        caption.move_to([0, -3.08, 0])
+
+        panel = RoundedRectangle(
+            width=min(width + 0.55, 12.2),
+            height=self.CC_PANEL_HEIGHT,
+            corner_radius=0.12,
+            stroke_width=0,
+            fill_color=BG,
+            fill_opacity=0.94,
+        ).move_to([0, -3.08, 0])
+        panel.set_z_index(90)
+        caption.set_z_index(91)
+        group = VGroup(panel, caption)
+
+        if self._cc_caption is not None:
+            self.play(FadeOut(self._cc_caption, shift=DOWN * 0.08), run_time=0.20)
+
+        self._cc_caption = group
+        self.play(FadeIn(group, shift=UP * 0.08), run_time=0.25)
         self.wait(seconds)
-        return caption
+        return group
+
+    def clear_cc(self):
+        """Remove the active caption without waiting."""
+        if self._cc_caption is not None:
+            self.play(FadeOut(self._cc_caption), run_time=0.20)
+            self._cc_caption = None
 
     def beat(self, seconds=1.0):
         """A small pedagogical pause so viewers can process a construction."""
